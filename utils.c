@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 20:53:31 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/17 18:19:35 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/17 19:44:28 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,24 @@ t_obj	* add_object(t_obj * first, t_obj * obj)
 		return(obj);
 	first->next = add_object(first->next, obj);
 	return (first);
+}
+
+void	bzero_obj(t_obj *obj)
+{
+	obj->c0[0] = 0;
+	obj->c0[1] = 0;
+	obj->c0[2] = 0;
+	obj->c1[0] = 0;
+	obj->c1[1] = 0;
+	obj->c1[2] = 0;
+	obj->c2[0] = 0;
+	obj->c2[1] = 0;
+	obj->c2[2] = 0;
+	obj->vec[0] = 0;
+	obj->vec[1] = 0;
+	obj->vec[2] = 0;
+	obj->type = 0;
+	obj->dia = 0;
+	obj->hight = 0;
+	obj->next = NULL;
 }

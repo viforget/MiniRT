@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:20:45 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/16 16:04:17 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/17 19:27:08 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +20,6 @@ t_arg	get_res(char **split, t_arg arg)
 	return (arg);
 }
 
-/*
-** TEMPORAIRE
-*/ 
-
-t_arg	get_cercle(char **split, t_arg arg)
-{
-	t_cercle	*cer;
-	char		*str;
-	int			color[3];
-
-	str = split[4];
-	cer = malloc(sizeof(t_cercle));
-	cer->c[0] = ft_atoi(split[1]);
-	cer->c[1] = ft_atoi(split[2]);
-	cer->rad = ft_atoi(split[3]);
-	color[0] = ft_atoi(split[4]);
-	while (*str != ',')
-		str++;
-	str++;
-	color[1] = ft_atoi(str);
-	while (*str != ',')
-		str++;
-	str++;
-	color[2] = ft_atoi(str);
-	cer->color = color[0] * 0x10000 + color[1] * 0x100 + color [2];
-	arg.list = cer;
-	return (arg);
-}
 
 t_arg	get_arg(char *file)
 {
@@ -57,14 +29,22 @@ t_arg	get_arg(char *file)
 	char	**split;
 
 	fd = open(file, O_RDONLY);
-	arg.list = NULL;
+	arg.obj = NULL;
 	while (get_next_line(fd, &str) && str)
 	{
 		split = ft_split(str, ' ');
 		if (ft_strcmp(split[0], "R") == 0)
 			arg = get_res(split, arg);
-		else if (ft_strcmp(split[0], "cercle") == 0)
-			arg = get_cercle(split, arg);
+		else if (ft_strcmp(split[0], "sp") == 0)
+			get_sp(split, arg);
+		else if (ft_strcmp(split[0], "pl") == 0)
+			get_pl(split, arg);
+		else if (ft_strcmp(split[0], "sq") == 0)
+			get_sq(split, arg);
+		else if (ft_strcmp(split[0], "cy") == 0)
+			get_cy(split, arg);
+		else if (ft_strcmp(split[0], "tr") == 0)
+			get_tr(split, arg);
 		ft_freeutab(split); 
 	}
 	return (arg);

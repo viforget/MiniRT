@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/17 17:59:30 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/17 20:31:25 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,6 @@
 
 
 /*
-** ARGUMENTS
-*/
-
-typedef struct 	s_arg
-{
-	int			res_y;
-	int			res_x;
-	char		save;
-	char		**screen;
-	void		*obj;
-}				t_arg;
-
-/*
-**  MLX
-*/
-
-typedef struct 	s_mlx
-{
-	void		*mlx;
-	void		*win;
-}				t_mlx;
-
-/*
 **	OBJ
 */
 
@@ -91,6 +68,43 @@ typedef	struct		s_light
 	struct s_light *next;;
 }					t_light;
 
+
+/*
+** LIGHT
+*/
+
+typedef struct	s_light
+{
+	float		c[3];
+	float		vec[3];
+	int			fov;
+}				*t_light;
+
+/*
+** ARGUMENTS
+*/
+
+typedef struct 	s_arg
+{
+	int			res_y;
+	int			res_x;
+	char		save;
+	char		**screen;
+	t_cam		*cam
+	t_obj		*obj;
+	t_light		*lig;
+}				t_arg;
+
+/*
+**  MLX
+*/
+
+typedef struct 	s_mlx
+{
+	void		*mlx;
+	void		*win;
+}				t_mlx;
+
 /*
 ** FUNCTIONS
 */ 
@@ -101,11 +115,24 @@ typedef	struct		s_light
 
 t_arg			get_arg(char * str);
 
+/*
+** GET_OBJECT.C
+*/
+
+void	get_sp(char **split, t_arg arg);
+void	get_pl(char **split, t_arg arg);
+void	get_sq(char **split, t_arg arg);
+void	get_cy(char **split, t_arg arg);
+void	get_tr(char **split, t_arg arg);
 
 /*
 **  UTILS.C
 */
 
+float	ft_atof(char *str);
 void	coordinate(char *str, float c[3]);
+int		get_color(char *str);
+t_obj	* add_object(t_obj * first, t_obj * obj);
+void	bzero_obj(t_obj *obj);
 
 #endif
