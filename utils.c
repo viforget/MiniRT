@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 20:53:31 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/17 18:18:53 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/17 18:19:35 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int		get_color(char *str)
 	while(*str && *str != ',')
 		str++;
 	color += ft_atoi(++str);
+	return (color);
 }
 
 t_obj	* add_object(t_obj * first, t_obj * obj)
