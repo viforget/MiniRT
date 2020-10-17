@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/16 22:04:08 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/17 17:59:30 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@
 
 #include <math.h>
 #include <mlx.h>
+
+
+/*
+** DEFINE 
+*/
+
+# define SP 1
+# define PL 2
+# define SQ 3
+# define CY 4
+# define TR 5
+
 
 /*
 ** STRUCTURES
@@ -54,58 +66,18 @@ typedef struct 	s_mlx
 **	OBJ
 */
 
-typedef struct	s_cercle
+typedef struct		s_obj
 {
-	float		c[3];
-	float		rad;
-	int			color;
-	void		*next;
-}				t_cercle;
-
-typedef struct	s_sp
-{
-	float		c[3];
-	float		dia;
-	int			color;
-	void		*next;
-}				t_sp;
-
-typedef struct	s_pl
-{
-	float		c[3];
-	float		vec[3];
-	int			color;
-	void		*next;
-}				t_pl;
-
-typedef struct	s_sq
-{
-	float		c[3];
-	float		vec[3];
-	float		hight;
-	int			color;
-	void		*next;
-}				t_sq;
-
-typedef struct	s_cy
-{
-	float		c[3];
-	float		vec[3];
-	float		dia;
-	float		hight;
-	int			color;
-	void		*next;
-}				t_cy;
-
-typedef struct	s_tr
-{
-	float		c1[3];
-	float		c2[3];
-	float		c3[3];
-	int			color;
-	void		*next;
-}				t_tr;
-
+	char			type;
+	float			c0[3];
+	float			c1[3];
+	float			c2[3];
+	float			vec[3];
+	float			dia;
+	float			hight;
+	int				color;
+	struct s_obj	*next;
+}					t_obj;
 
 /*
 ** LIGHT
