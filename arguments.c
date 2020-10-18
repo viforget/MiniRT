@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:20:45 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/17 19:27:08 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/18 13:56:36 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ t_arg	get_res(char **split, t_arg arg)
 	return (arg);
 }
 
+t_arg	get_amb(char **split, t_arg arg)
+{
+	arg.a_rat = ft_atof(split[1]);
+	arg.a_color = get_color(split[2]);
+	return (arg);
+}
 
 t_arg	get_arg(char *file)
 {
@@ -29,7 +35,9 @@ t_arg	get_arg(char *file)
 	char	**split;
 
 	fd = open(file, O_RDONLY);
+	arg.cam = NULL;
 	arg.obj = NULL;
+	arg.lig = NULL;
 	while (get_next_line(fd, &str) && str)
 	{
 		split = ft_split(str, ' ');
@@ -45,6 +53,12 @@ t_arg	get_arg(char *file)
 			get_cy(split, arg);
 		else if (ft_strcmp(split[0], "tr") == 0)
 			get_tr(split, arg);
+		else if (ft_strcmp(split[0], "c") == 0)
+			get_cam(split, arg);
+		else if (ft_strcmp(split[0], "l") == 0)
+			get_lig(split, arg);
+		else if (ft_strcmp(split[0], "A") == 0)
+			arg = get_amb(split, arg);
 		ft_freeutab(split); 
 	}
 	return (arg);
