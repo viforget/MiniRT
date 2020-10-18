@@ -6,24 +6,24 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 12:33:04 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/18 13:10:07 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/18 14:03:50 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MiniRT.h"
 
-t_cam	* add_cam(t_cam * first, t_cam * cam)
+t_cam	*add_cam(t_cam *first, t_cam *cam)
 {
 	if (!first)
-		return(cam);
+		return (cam);
 	first->next = add_cam(first->next, cam);
 	return (first);
 }
 
-t_lig	* add_lig(t_lig * first, t_lig * lig)
+t_lig	*add_lig(t_lig *first, t_lig *lig)
 {
 	if (!first)
-		return(lig);
+		return (lig);
 	first->next = add_lig(first->next, lig);
 	return (first);
 }

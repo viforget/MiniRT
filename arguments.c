@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:20:45 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/18 13:56:36 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/18 14:04:37 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ t_arg	get_amb(char **split, t_arg arg)
 t_arg	get_arg(char *file)
 {
 	t_arg	arg;
-	int 	fd;
-	char 	*str;
+	int		fd;
+	char	*str;
 	char	**split;
 
 	fd = open(file, O_RDONLY);
@@ -59,7 +59,7 @@ t_arg	get_arg(char *file)
 			get_lig(split, arg);
 		else if (ft_strcmp(split[0], "A") == 0)
 			arg = get_amb(split, arg);
-		ft_freeutab(split); 
+		ft_freeutab(split);
 	}
 	return (arg);
 }

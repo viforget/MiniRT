@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 02:54:03 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/17 19:41:02 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/18 14:05:04 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int		 main(int ac, char **av)
 	arg = get_arg(av[1]);
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, arg.res_x, arg.res_y, av[1]);
-//	aff(mlx, arg);
+	//aff(mlx, arg);
 	//mlx_loop(mlx.mlx);
 }

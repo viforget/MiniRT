@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 20:53:31 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/17 19:44:28 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/18 14:03:36 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 float	ft_atof(char *str)
 {
-	float	 nb;
-	float 	temp;
+	float	nb;
+	float	temp;
 
 	nb = ft_atoi(str);
 	while (*str && *str != '.')
@@ -40,22 +40,22 @@ void	coordinate(char *str, float c[3])
 int		get_color(char *str)
 {
 	char	**split;
-	int 	color;
+	int		color;
 
 	color = ft_atoi(str) * 0x10000;
-	while(*str && *str != ',')
+	while (*str && *str != ',')
 		str++;
 	color += ft_atoi(++str) * 0x100;
-	while(*str && *str != ',')
+	while (*str && *str != ',')
 		str++;
 	color += ft_atoi(++str);
 	return (color);
 }
 
-t_obj	* add_object(t_obj * first, t_obj * obj)
+t_obj	*add_object(t_obj *first, t_obj *obj)
 {
 	if (!first)
-		return(obj);
+		return (obj);
 	first->next = add_object(first->next, obj);
 	return (first);
 }
