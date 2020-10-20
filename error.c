@@ -6,9 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 14:22:43 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/20 14:34:20 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/20 15:43:04 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "MiniRT.h"
 
 void	del_obj(t_obj *obj)
 {
@@ -35,15 +37,19 @@ t_arg	get_error(t_arg arg, int fd, char **split)
 {
 	if (arg.screen)
 		ft_freeutab(arg.screen);
+	arg.screen = NULL;
 	if (arg.obj)
 		del_obj(arg.obj);
+	arg.obj = NULL;
 	if (arg.cam)
 		del_cam(arg.cam);
+	arg.cam = NULL;
 	if (arg.lig)
 		del_lig(arg.lig);
+	arg.lig = NULL;
 	ft_freeutab(split);
 	close(fd);
 	ft_putstr("Error; problem with .rt file\n");
-	return (NULL);
+	return (arg);
 }
 

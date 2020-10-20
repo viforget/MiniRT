@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/17 20:31:25 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/20 15:46:37 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 /*
 ** INCLUDES
 */
+
 #include "get_next_line.h"
 #include "libft.h"
 
 #include <math.h>
 #include <mlx.h>
 
+
+#include <stdio.h>
 
 /*
 ** DEFINE 
@@ -60,25 +63,25 @@ typedef struct		s_obj
 ** LIGHT
 */
 
-typedef	struct		s_light
+typedef	struct		s_lig
 {
-	char			*id;
 	float			c[3];
-	float			dia;
-	struct s_light *next;;
-}					t_light;
-
+	float			rat;
+	int				color;
+	struct s_lig *next;;
+}					t_lig;
 
 /*
-** LIGHT
+** CAMERA
 */
 
-typedef struct	s_light
+typedef struct		s_cam
 {
-	float		c[3];
-	float		vec[3];
-	int			fov;
-}				*t_light;
+	float			c[3];
+	float			vec[3];
+	int				fov;
+	struct	s_cam	*next;
+}					t_cam;
 
 /*
 ** ARGUMENTS
@@ -90,9 +93,11 @@ typedef struct 	s_arg
 	int			res_x;
 	char		save;
 	char		**screen;
-	t_cam		*cam
+	float		a_rat;
+	int			a_color;
+	t_cam		*cam;
 	t_obj		*obj;
-	t_light		*lig;
+	t_lig		*lig;
 }				t_arg;
 
 /*
@@ -113,17 +118,37 @@ typedef struct 	s_mlx
 ** ARGUMENTS.C
 */
 
-t_arg			get_arg(char * str);
+t_arg	get_arg(char * str);
+
+/*
+** CAMERA.C 
+*/
+
+int		get_cam(char **split, t_arg arg);
+
+
+
+/*
+** ERROR.C
+*/
+
+t_arg	get_error(t_arg arg, int fd, char **split);
 
 /*
 ** GET_OBJECT.C
 */
 
-void	get_sp(char **split, t_arg arg);
-void	get_pl(char **split, t_arg arg);
-void	get_sq(char **split, t_arg arg);
-void	get_cy(char **split, t_arg arg);
-void	get_tr(char **split, t_arg arg);
+int		get_sp(char **split, t_arg arg);
+int		get_pl(char **split, t_arg arg);
+int		get_sq(char **split, t_arg arg);
+int		get_cy(char **split, t_arg arg);
+int		get_tr(char **split, t_arg arg);
+
+/*
+** LIGHT.C 
+*/
+
+int		get_lig(char **split, t_arg arg);
 
 /*
 **  UTILS.C
@@ -134,5 +159,13 @@ void	coordinate(char *str, float c[3]);
 int		get_color(char *str);
 t_obj	* add_object(t_obj * first, t_obj * obj);
 void	bzero_obj(t_obj *obj);
+
+/*
+** UTILS2.c 
+*/
+
+t_cam	* add_cam(t_cam * first, t_cam * cam);
+int		sizeof_tab(char **tab);
+t_lig	* add_lig(t_lig * first, t_lig * lig);
 
 #endif
