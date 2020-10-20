@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 02:54:03 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/18 14:05:04 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/20 16:42:35 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ int		 main(int ac, char **av)
 	t_mlx	mlx;
 
 	if (ac < 2)
+	{
+		ft_putendl("Error: no file");
 		return (0);
+	}
 	arg = get_arg(av[1]);
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, arg.res_x, arg.res_y, av[1]);
