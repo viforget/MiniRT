@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/20 15:46:37 by viforget         ###   ########.fr       */
+/*   Updated: 2020/10/21 10:46:31 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 
 #include <math.h>
 #include <mlx.h>
-
 
 #include <stdio.h>
 
@@ -132,7 +131,7 @@ int		get_cam(char **split, t_arg arg);
 ** ERROR.C
 */
 
-t_arg	get_error(t_arg arg, int fd, char **split);
+int	get_error(t_arg arg, char **split);
 
 /*
 ** GET_OBJECT.C
