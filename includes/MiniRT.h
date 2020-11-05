@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/21 10:46:31 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/05 15:24:12 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@
 # define SQ 3
 # define CY 4
 # define TR 5
+# define X 0
+# define Y 1
+# define Z 2
 
 
 /*
@@ -166,5 +169,12 @@ void	bzero_obj(t_obj *obj);
 t_cam	* add_cam(t_cam * first, t_cam * cam);
 int		sizeof_tab(char **tab);
 t_lig	* add_lig(t_lig * first, t_lig * lig);
+
+/*
+** VECTOR.C
+*/
+
+float	scal_vector(float v1[3], float v2[3]);
+void	vector_sub(float v1[3], float v2[3], float ret[3]);
 
 #endif

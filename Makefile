@@ -6,7 +6,7 @@
 #    By: viforget <viforget@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 07:57:46 by viforget          #+#    #+#              #
-#    Updated: 2020/10/20 16:33:48 by viforget         ###   ########.fr        #
+#    Updated: 2020/11/05 15:23:06 by viforget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ SRC = main.c\
 	  utils2.c\
 	  camera.c\
 	  error.c\
+	  display.c\
+	  vector.c\
 	  Get_next_line/get_next_line.c
 
 O_FILES = $(SRC:%.c=%.o)
