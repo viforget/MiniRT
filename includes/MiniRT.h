@@ -5,8 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/08 14:45:39 by viforget          #+#    #+#             */
+/*   Updated: 2020/11/08 14:46:11 by viforget         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MiniRT.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/05 15:24:12 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/08 14:44:54 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +138,7 @@ t_arg	get_arg(char * str);
 ** CAMERA.C 
 */
 
-int		get_cam(char **split, t_arg arg);
+int		get_cam(char **split, t_arg *arg);
 
 
 
@@ -140,17 +152,17 @@ int	get_error(t_arg arg, char **split);
 ** GET_OBJECT.C
 */
 
-int		get_sp(char **split, t_arg arg);
-int		get_pl(char **split, t_arg arg);
-int		get_sq(char **split, t_arg arg);
-int		get_cy(char **split, t_arg arg);
-int		get_tr(char **split, t_arg arg);
+int		get_sp(char **split, t_arg *arg);
+int		get_pl(char **split, t_arg *arg);
+int		get_sq(char **split, t_arg *arg);
+int		get_cy(char **split, t_arg *arg);
+int		get_tr(char **split, t_arg *arg);
 
 /*
 ** LIGHT.C 
 */
 
-int		get_lig(char **split, t_arg arg);
+int		get_lig(char **split, t_arg *arg);
 
 /*
 **  UTILS.C

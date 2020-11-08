@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:20:45 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/21 10:53:47 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/08 16:09:31 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ t_arg	bzero_arg(t_arg arg)
 	return (arg);
 }
 
-int		do_line(char **split, t_arg arg, int a)
+int		do_line(char **split, t_arg *arg, int a)
 {
-	int i = 0;
 	if (ft_strcmp(split[0], "R") == 0 && sizeof_tab(split) == 3)
-		arg = get_res(split, arg, &a);
+		*arg = get_res(split, *arg, &a);
 	else if (ft_strcmp(split[0], "sp") == 0 && sizeof_tab(split) == 4)
 		a = get_sp(split, arg);
 	else if (ft_strcmp(split[0], "pl") == 0 && sizeof_tab(split) == 4)
@@ -59,9 +58,11 @@ int		do_line(char **split, t_arg arg, int a)
 	else if (ft_strcmp(split[0], "l") == 0 && sizeof_tab(split) == 4)
 		a = get_lig(split, arg);
 	else if (ft_strcmp(split[0], "A") == 0 && sizeof_tab(split) == 3)
-		arg = get_amb(split, arg, &a);
+		*arg = get_amb(split, *arg, &a);
+	else if (sizeof_tab(split) == 0)
+		a = 1;
 	if (a == 0)
-		return (get_error(arg, split));
+		return (get_error(*arg, split));
 	ft_freeutab(split);
 	return (1);
 }
@@ -77,7 +78,7 @@ t_arg	get_arg(char *file)
 	arg = bzero_arg(arg);
 	while (get_next_line(fd, &str) && str)
 	{
-		if (do_line(ft_split(str, ' '), arg, 0) == 0)
+		if (do_line(ft_split(str, ' '), &arg, 0) == 0)
 		{
 			close(fd);
 			return (arg);
