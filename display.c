@@ -5,18 +5,6 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 16:08:58 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/08 16:40:55 by viforget         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
 /*   Updated: 2020/11/08 16:08:34 by viforget         ###   ########.fr       */
 /*                                                                            */
@@ -42,14 +30,10 @@ float	dist_sp(t_obj *obj, float v[3], float p[3])
 	if (b * b - 4 * a * c < 0)
 		return (-1);
 	discr = sqrtf(discr);
-	printf("%f %f\n", b, discr);
 	d1 = (-b + discr) / 2;
-	d2 = (b - discr) / 2;
-	printf("%f\n", d1);
-	printf("%f\n", d2);
+	d2 = (-b - discr) / 2;
 	if (d1 > d2 || d1 < 0)
 		d1 = d2;
-	
 	return (d1 < 0 ? -1 : d1);
 }
 
@@ -61,7 +45,7 @@ int		call_pixel(t_obj *obj, float v[3], float p[3])
 
 	color = -1;
 	dist = -1;
-	while(obj)
+	while(obj != 0)
 	{
 		if (obj->type == SP)
 		{
@@ -78,4 +62,38 @@ int		call_pixel(t_obj *obj, float v[3], float p[3])
 	
 }
 
-//void	display_screen(t_mlx mlx, )
+void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
+{
+	int 	x;
+	int 	y;
+	float	p[3];
+	float	v[3];
+	int		color;
+	int		*display;
+
+	y = 0;
+	v[Y] = cam->vec[Y];
+	v[Z] = cam->vec[Z];
+	mlx.img = mlx_new_image(mlx.mlx, arg.res_x, arg.res_y);
+	display = (int *)mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.size_l, &mlx.endian);
+
+	while (y < arg.res_y)
+	{
+		x = 0;
+		while(x < arg.res_x)
+		{
+			p[X] = cam->c[X] + ((- (arg.res_x / 2) + x) * 0.1);
+			//p[X] = cam->c[X];
+			p[Y] = cam->c[Y] + ((- (arg.res_y / 2) + y) * 0.1);
+			p[Z] = cam->c[Z];
+
+//			v[X] =
+			color = call_pixel(arg.obj, cam->vec, p);
+			//mlx_pixel_put(mlx.mlx, mlx.win, x, y, color);
+			display[y * arg.res_x + x] = color;
+			x++;
+		}
+		y++;
+	}
+	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, 0, 0);
+}
