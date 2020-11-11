@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/11 11:54:58 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/11 17:47:16 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ float	dist_sp(t_obj *obj, float v[3], float p[3])
 	return (d1 < 0 ? -1 : d1);
 }
 
+float	dist_obj(t_obj *obj, float v[3], float p[3])
+{
+	if (obj->type == SP)
+		return(dist_sp(obj, v, p));
+	return (-1);
+}
+
 int		call_pixel(t_arg arg, float v[3], float p[3])
 {
 	t_obj	*cobj;
@@ -50,14 +57,11 @@ int		call_pixel(t_arg arg, float v[3], float p[3])
 	dist = -1;
 	while(cobj)
 	{
-		if (cobj->type == SP)
-		{
-			buf = dist_sp(cobj, v, p);
-			if (buf >= 0 && (buf < dist || dist == -1))
-			{
-				dist = buf;
-				color = calc_light(p, cobj->color, arg);
-			}
+		buf = dist_obj(cobj, v, p);
+		if (buf >= 0 && (buf < dist || dist == -1))
+		{	
+			dist = buf;
+			color = calc_light(p, cobj->color, arg);
 		}
 		cobj = cobj->next;
 	}
