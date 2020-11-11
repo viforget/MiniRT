@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/08 16:08:34 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/11 09:17:06 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,32 @@ float	dist_sp(t_obj *obj, float v[3], float p[3])
 
 int		call_pixel(t_obj *obj, float v[3], float p[3])
 {
-	float dist;
-	float buf;
-	int color;
+	t_obj	*cobj;
+	float	temp[3];
+	float	dist;
+	float	buf;
+	int		color;
 
+	cobj = obj;
 	color = -1;
 	dist = -1;
-	while(obj != 0)
+	while(cobj)
 	{
-		if (obj->type == SP)
+		if (cobj->type == SP)
 		{
-			buf = dist_sp(obj, v, p);
+			buf = dist_sp(cobj, v, p);
 			if (buf >= 0 && (buf < dist || dist == -1))
 			{
 				dist = buf;
-				color = obj->color;
+				color = cobj->color;
 			}
 		}
-		obj = obj->next;
+		cobj = cobj->next;
+	}
+	if (dist > 0)
+	{
+		calc_coord(p, v, dist, temp);
+		printf("%f %f %f\n", temp[X], temp[Y], temp[Z]);
 	}
 	return (color);
 	
@@ -85,6 +93,7 @@ void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 			p[X] = cam->c[X] + ((- (arg.res_x / 2) + x) * 0.1);
 			//p[X] = cam->c[X];
 			p[Y] = cam->c[Y] + ((- (arg.res_y / 2) + y) * 0.1);
+			//p[Y] = cam->c[Y];
 			p[Z] = cam->c[Z];
 
 //			v[X] =

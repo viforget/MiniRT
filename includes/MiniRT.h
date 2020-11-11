@@ -5,20 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 14:45:39 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/08 14:46:11 by viforget         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   MiniRT.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/08 14:44:54 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/11 09:03:22 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +110,10 @@ typedef struct 	s_mlx
 {
 	void		*mlx;
 	void		*win;
+	void		*img;
+	int			size_l;
+	int			bpp;
+	int			endian;
 }				t_mlx;
 
 /*
@@ -135,12 +127,22 @@ typedef struct 	s_mlx
 t_arg	get_arg(char * str);
 
 /*
+**	CALC_COORD.C
+*/
+
+void	calc_coord(float c[3], float v[3], float dist, float ret[3]);
+
+/*
 ** CAMERA.C 
 */
 
 int		get_cam(char **split, t_arg *arg);
 
+/*
+** DISPLAY.C
+*/
 
+void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam);
 
 /*
 ** ERROR.C
@@ -181,6 +183,7 @@ void	bzero_obj(t_obj *obj);
 t_cam	* add_cam(t_cam * first, t_cam * cam);
 int		sizeof_tab(char **tab);
 t_lig	* add_lig(t_lig * first, t_lig * lig);
+float	radian(float angle);
 
 /*
 ** VECTOR.C

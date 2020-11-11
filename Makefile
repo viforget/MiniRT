@@ -6,7 +6,7 @@
 #    By: viforget <viforget@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 07:57:46 by viforget          #+#    #+#              #
-#    Updated: 2020/11/05 15:23:06 by viforget         ###   ########.fr        #
+#    Updated: 2020/11/11 09:02:01 by viforget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC = main.c\
 	  error.c\
 	  display.c\
 	  vector.c\
+	  calc_coord.c\
 	  Get_next_line/get_next_line.c
 
 O_FILES = $(SRC:%.c=%.o)
