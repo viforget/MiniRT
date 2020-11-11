@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/11 09:03:22 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/11 11:13:54 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@
 # define X 0
 # define Y 1
 # define Z 2
+# define RED 0
+# define GREEN 1
+# define BLUE 2
 
 
 /*
@@ -131,6 +134,7 @@ t_arg	get_arg(char * str);
 */
 
 void	calc_coord(float c[3], float v[3], float dist, float ret[3]);
+void	vect_to(float ori[3], float des[3], float v[3]);
 
 /*
 ** CAMERA.C 
@@ -164,6 +168,7 @@ int		get_tr(char **split, t_arg *arg);
 ** LIGHT.C 
 */
 
+int		calc_light(float c[3], int color, t_arg arg);
 int		get_lig(char **split, t_arg *arg);
 
 /*
@@ -184,6 +189,7 @@ t_cam	* add_cam(t_cam * first, t_cam * cam);
 int		sizeof_tab(char **tab);
 t_lig	* add_lig(t_lig * first, t_lig * lig);
 float	radian(float angle);
+int		light_color(int color, float intensity, int light);
 
 /*
 ** VECTOR.C
