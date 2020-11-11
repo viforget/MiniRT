@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/11 09:17:06 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/11 11:54:58 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ float	dist_sp(t_obj *obj, float v[3], float p[3])
 	return (d1 < 0 ? -1 : d1);
 }
 
-int		call_pixel(t_obj *obj, float v[3], float p[3])
+int		call_pixel(t_arg arg, float v[3], float p[3])
 {
 	t_obj	*cobj;
 	float	temp[3];
@@ -45,7 +45,7 @@ int		call_pixel(t_obj *obj, float v[3], float p[3])
 	float	buf;
 	int		color;
 
-	cobj = obj;
+	cobj = arg.obj;
 	color = -1;
 	dist = -1;
 	while(cobj)
@@ -56,7 +56,7 @@ int		call_pixel(t_obj *obj, float v[3], float p[3])
 			if (buf >= 0 && (buf < dist || dist == -1))
 			{
 				dist = buf;
-				color = cobj->color;
+				color = calc_light(p, cobj->color, arg);
 			}
 		}
 		cobj = cobj->next;
@@ -64,7 +64,6 @@ int		call_pixel(t_obj *obj, float v[3], float p[3])
 	if (dist > 0)
 	{
 		calc_coord(p, v, dist, temp);
-		printf("%f %f %f\n", temp[X], temp[Y], temp[Z]);
 	}
 	return (color);
 	
@@ -97,8 +96,7 @@ void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 			p[Z] = cam->c[Z];
 
 //			v[X] =
-			color = call_pixel(arg.obj, cam->vec, p);
-			//mlx_pixel_put(mlx.mlx, mlx.win, x, y, color);
+			color = call_pixel(arg, cam->vec, p);
 			display[y * arg.res_x + x] = color;
 			x++;
 		}

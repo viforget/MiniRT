@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 08:42:22 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/11 09:16:53 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/11 10:52:29 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,33 @@ void	calc_coord(float c[3], float v[3], float dist, float ret[3])
 
 	f = (dist * dist) / ((v[X] * v[X]) + (v[Y] * v[Y]) + (v[Z] * v[Z]));
 	f = sqrtf(f);
-	//ret[X] = sqrtf((dist * dist) / ((v[Y] * v[Y] * f) + ((v[Z] * v[Z] * f))));
-	//ret[Y] = sqrtf((dist * dist) / ((v[X] * v[X] * f) + ((v[Z] * v[Z] * f))));
-	//ret[Z] = sqrtf((dist * dist) / ((v[X] * v[X] * f) + ((v[Y] * v[Y] * f))));
-	ret[X] = v[X] * f;
-	ret[Y] = v[Y] * f;
-	ret[Z] = v[Z] * f;
-	ret[X] *= is_pos(v[X]); 
-	ret[Y] *= is_pos(v[Y]); 
-	ret[Z] *= is_pos(v[Z]);
+	ret[X] = is_pos(v[X]) * v[X] * f; 
+	ret[Y] = is_pos(v[Y]) * v[Y] * f; 
+	ret[Z] = is_pos(v[Z]) * v[Z] * f;
 	ret[X] += c[X];
 	ret[Y] += c[Y];
 	ret[Z] += c[Z];
+}
+
+float	maxf(float a, float b, float c)
+{
+	if (a >= b && a >= c)
+		return (a);
+	if (b >= c)
+		return (b);
+	return (c);
+}
+
+void	vect_to(float ori[3], float des[3], float v[3])
+{
+	float t;
+
+	v[X] = des[X] - ori[X];
+	v[Y] = des[Y] - ori[Y];
+	v[X] = des[Z] - ori[Z];
+	//t = v[X] * v[X] + v[Y] * v[Y] + v[Z] * v[Z];
+	t = maxf(v[X], v[Y], v[Z]);
+	v[X] /= t;
+	v[Y] /= t;
+	v[Z] /= t;
 }

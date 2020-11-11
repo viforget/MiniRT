@@ -6,11 +6,35 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 13:22:55 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/08 14:44:52 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/11 12:18:24 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MiniRT.h"
+
+int		calc_light(float c[3], int color, t_arg arg)
+{
+	t_lig	*light;
+	t_obj	*obj;
+	float	v[3];
+	int 	ret;
+	float	dist;
+
+	ret = light_color(color, arg.a_rat, arg.a_color);
+	light = arg.lig;
+	while(light)
+	{
+		vect_to(c, light->c, v);
+		obj = arg.obj;
+		while(obj)
+		{
+
+			obj = obj.next;
+		}
+		light = light->next;
+	}
+	return (ret);
+}
 
 void	bzero_lig(t_lig *lig)
 {

@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 12:33:04 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/10 13:27:44 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/11 11:14:46 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,18 @@ int		sizeof_tab(char **tab)
 float	radian(float angle)
 {
 	return (angle * (M_PI / 180));
+}
+
+int		light_color(int color, float intensity, int light)
+{
+	int 	col[3];
+	float	lig[3];
+
+	lig[RED] = (light / 0x10000 * intensity) / 255;
+	lig[GREEN] = (((light / 0x100) % 0x100) * intensity) / 255;
+	lig[BLUE] = (light % 0x100 * intensity) / 255;
+	col[RED] = (color / 0x10000) * lig[RED];
+	col[GREEN] = ((color / 0x100) % 0x100) * lig[GREEN];
+	col[BLUE] = (color % 0x100) * lig[BLUE];
+	return (col[RED] * 0x10000 + col[GREEN] * 0x100 + col[BLUE]);
 }
