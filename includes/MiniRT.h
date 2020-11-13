@@ -40,7 +40,7 @@
 # define RED 0
 # define GREEN 1
 # define BLUE 2
-
+# define ZE 0.002
 
 /*
 ** STRUCTURES
@@ -176,6 +176,7 @@ int		get_lig(char **split, t_arg *arg);
 **  UTILS.C
 */
 
+void	afv(char *s, float v[3]);
 float	ft_atof(char *str);
 void	coordinate(char *str, float c[3]);
 int		get_color(char *str);
