@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/11 18:14:46 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/16 10:59:16 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,12 @@ int		sizeof_tab(char **tab);
 t_lig	* add_lig(t_lig * first, t_lig * lig);
 float	radian(float angle);
 int		light_color(int color, float intensity, int light);
+
+/*
+**	UTILS3.C
+*/
+
+void	normalize_vect(float v[3]);
 
 /*
 ** VECTOR.C
