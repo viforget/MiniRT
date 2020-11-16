@@ -6,7 +6,7 @@
 #    By: viforget <viforget@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 07:57:46 by viforget          #+#    #+#              #
-#    Updated: 2020/11/11 09:02:01 by viforget         ###   ########.fr        #
+#    Updated: 2020/11/16 11:00:53 by viforget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC = main.c\
 	  light.c\
 	  utils.c\
 	  utils2.c\
+	  utils3.c\
 	  camera.c\
 	  error.c\
 	  display.c\

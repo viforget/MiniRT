@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 08:42:22 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/11 18:15:01 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/16 11:09:08 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,5 @@ void	vect_to(float ori[3], float des[3], float v[3], float *d)
 	v[X] = des[Z] - ori[Z];
 	//t = v[X] * v[X] + v[Y] * v[Y] + v[Z] * v[Z];
 	*d = sqrtf(v[X] * v[X] + v[Y] * v[Y] + v[Z] * v[Z]);
-	printf("%f\n",  *d);
-	t = maxf(v[X], v[Y], v[Z]);
-	v[X] /= t;
-	v[Y] /= t;
-	v[Z] /= t;
+	normalize_vect(v);
 }
