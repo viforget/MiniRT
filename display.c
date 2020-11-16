@@ -27,14 +27,16 @@ float	dist_sp(t_obj *obj, float v[3], float p[3])
 	b = 2 * scal_vector(v ,di);
 	c = scal_vector(di, di) - (obj->dia / 2) * (obj->dia / 2);
 	discr = b * b - 4 * a * c;
-	if (b * b - 4 * a * c < 0)
+	if (b * b - 4 * a * c < ZE)
 		return (-1);
 	discr = sqrtf(discr);
 	d1 = (-b + discr) / 2;
 	d2 = (-b - discr) / 2;
-	if (d1 > d2 || d1 < 0)
+	if ((d2 > ZE && d1 > d2) || d1 < ZE)
 		d1 = d2;
-	return (d1 < 0 ? -1 : d1);
+	if (d1 == 0.000010)
+		printf("CHECK\n");
+	return (d1 < ZE ? -1 : d1);
 }
 
 float	dist_obj(t_obj *obj, float v[3], float p[3])
@@ -53,7 +55,7 @@ int		call_pixel(t_arg arg, float v[3], float p[3])
 	int		color;
 
 	cobj = arg.obj;
-	color = -1;
+	color = 0;
 	dist = -1;
 	while(cobj)
 	{
@@ -61,13 +63,15 @@ int		call_pixel(t_arg arg, float v[3], float p[3])
 		if (buf >= 0 && (buf < dist || dist == -1))
 		{	
 			dist = buf;
-			color = calc_light(p, cobj->color, arg);
+			color = cobj->color;
 		}
 		cobj = cobj->next;
 	}
-	if (dist > 0)
+	if (dist > ZE)
 	{
+		//afv("p", p);
 		calc_coord(p, v, dist, temp);
+		color = calc_light(temp, color, arg);
 	}
 	return (color);
 	
@@ -98,7 +102,7 @@ void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 			p[Y] = cam->c[Y] + ((- (arg.res_y / 2) + y) * 0.1);
 			//p[Y] = cam->c[Y];
 			p[Z] = cam->c[Z];
-
+			p[Z] = 0;
 //			v[X] =
 			color = call_pixel(arg, cam->vec, p);
 			display[y * arg.res_x + x] = color;

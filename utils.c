@@ -12,6 +12,15 @@
 
 #include "MiniRT.h"
 
+void	afv(char *s, float v[3])
+{
+	if (s)
+		printf("%s : %f %f %f\n", s, v[0], v[1], v[2]);
+	else
+		printf("%f %f %f\n", v[0], v[1], v[2]);
+
+}
+
 float	ft_atof(char *str)
 {
 	float	nb;
