@@ -6,45 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/11 17:47:16 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/17 14:52:08 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MiniRT.h"
-
-float	dist_sp(t_obj *obj, float v[3], float p[3])
-{
-	float	di[3];
-	float	d1;
-	float	d2;
-	float	discr;
-	float	a;
-	float	b;
-	float	c;
-
-	a = scal_vector(v, v);
-	vector_sub(p, obj->c0, di);
-	b = 2 * scal_vector(v ,di);
-	c = scal_vector(di, di) - (obj->dia / 2) * (obj->dia / 2);
-	discr = b * b - 4 * a * c;
-	if (b * b - 4 * a * c < ZE)
-		return (-1);
-	discr = sqrtf(discr);
-	d1 = (-b + discr) / 2;
-	d2 = (-b - discr) / 2;
-	if ((d2 > ZE && d1 > d2) || d1 < ZE)
-		d1 = d2;
-	if (d1 == 0.000010)
-		printf("CHECK\n");
-	return (d1 < ZE ? -1 : d1);
-}
-
-float	dist_obj(t_obj *obj, float v[3], float p[3])
-{
-	if (obj->type == SP)
-		return(dist_sp(obj, v, p));
-	return (-1);
-}
 
 int		call_pixel(t_arg arg, float v[3], float p[3])
 {
@@ -69,7 +35,6 @@ int		call_pixel(t_arg arg, float v[3], float p[3])
 	}
 	if (dist > ZE)
 	{
-		//afv("p", p);
 		calc_coord(p, v, dist, temp);
 		color = calc_light(temp, color, arg);
 	}
@@ -97,9 +62,9 @@ void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 		x = 0;
 		while(x < arg.res_x)
 		{
-			p[X] = cam->c[X] + ((- (arg.res_x / 2) + x) * 0.1);
+			p[X] = cam->c[X] + ((- (arg.res_x / 2) + x) * 0.102);
 			//p[X] = cam->c[X];
-			p[Y] = cam->c[Y] + ((- (arg.res_y / 2) + y) * 0.1);
+			p[Y] = cam->c[Y] + ((- (arg.res_y / 2) + y) * 0.102);
 			//p[Y] = cam->c[Y];
 			p[Z] = cam->c[Z];
 			p[Z] = 0;

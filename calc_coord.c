@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 08:42:22 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/16 11:09:08 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/17 15:01:32 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,10 @@ float	maxf(float a, float b, float c)
 	return (c);
 }
 
-void	vect_to(float ori[3], float des[3], float v[3], float *d)
+void	vect_to(float ori[3], float des[3], float v[3], double *d)
 {
-	float t;
-
 	v[X] = des[X] - ori[X];
 	v[Y] = des[Y] - ori[Y];
-	v[X] = des[Z] - ori[Z];
-	//t = v[X] * v[X] + v[Y] * v[Y] + v[Z] * v[Z];
-	*d = sqrtf(v[X] * v[X] + v[Y] * v[Y] + v[Z] * v[Z]);
-	normalize_vect(v);
+	v[Z] = des[Z] - ori[Z];
+	*d = normalize_vect(v);
 }

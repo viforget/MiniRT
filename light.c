@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 13:22:55 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/11 18:17:39 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/17 15:00:02 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		calc_light(float c[3], int color, t_arg arg)
 	char	check;
 	float	v[3];
 	int 	ret;
-	float	dist;
+	double	dist;
 	
 	ret = light_color(color, arg.a_rat, arg.a_color);
 	light = arg.lig;
@@ -37,14 +37,8 @@ int		calc_light(float c[3], int color, t_arg arg)
 		check = 1;
 		while(obj && check == 1)
 		{
-			/*if (obj->type == SP)
-			{
-				printf("%f %f\n", dist_obj(obj, v, c), dist);
-				printf("%f %f %f\n", v[X], v[Y], v[Z]);
-			}*/
 			if (verif(dist_obj(obj, v, c), dist))
 			{
-				printf("%f %f\n", dist_obj(obj, v, c), dist);
 				check = 0;
 			}
 			obj = obj->next;

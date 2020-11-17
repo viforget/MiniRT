@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 12:26:37 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/16 11:04:34 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/16 11:16:40 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int		get_cam(char **split, t_arg *arg)
 	coordinate(split[1], cam->c);
 	coordinate(split[2], cam->vec);
 	normalize_vect(cam->vec);
-	afv("vec", cam->vec);
 	cam->fov = ft_atoi(split[3]);
 	arg->cam = add_cam(arg->cam, cam);
 	return (1);
