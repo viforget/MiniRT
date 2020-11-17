@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/16 10:59:16 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/17 15:02:39 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ t_arg	get_arg(char * str);
 */
 
 void	calc_coord(float c[3], float v[3], float dist, float ret[3]);
-void	vect_to(float ori[3], float des[3], float v[3], float *d);
+void	vect_to(float ori[3], float des[3], float v[3], double *d);
 
 /*
 ** CAMERA.C 
@@ -146,8 +146,13 @@ int		get_cam(char **split, t_arg *arg);
 ** DISPLAY.C
 */
 
-float	dist_obj(t_obj *obj, float v[3], float p[3]);
 void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam);
+
+/*
+** DISTANCE.C
+*/
+
+double	dist_obj(t_obj *obj, float v[3], float p[3]);
 
 /*
 ** ERROR.C
@@ -197,7 +202,7 @@ int		light_color(int color, float intensity, int light);
 **	UTILS3.C
 */
 
-void	normalize_vect(float v[3]);
+double	normalize_vect(float v[3]);
 
 /*
 ** VECTOR.C
