@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/17 14:52:08 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/18 13:44:03 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,14 @@ void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 		x = 0;
 		while(x < arg.res_x)
 		{
-			p[X] = cam->c[X] + ((- (arg.res_x / 2) + x) * 0.102);
+			p[X] = cam->c[X] + ((- (arg.res_x / 2) + x) * 0.1);
 			//p[X] = cam->c[X];
-			p[Y] = cam->c[Y] + ((- (arg.res_y / 2) + y) * 0.102);
+			p[Y] = cam->c[Y] + ((- (arg.res_y / 2) + y) * 0.075);
 			//p[Y] = cam->c[Y];
 			p[Z] = cam->c[Z];
-			p[Z] = 0;
-//			v[X] =
+			
+			v[Y] = 0;
+			rhor(cam->vec, calc_angle(cam->fov, arg.res_x, x), v);
 			color = call_pixel(arg, cam->vec, p);
 			display[y * arg.res_x + x] = color;
 			x++;

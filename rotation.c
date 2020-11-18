@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:06:31 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/10 13:50:05 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/18 14:02:38 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,34 @@ void	rz(float c[3], float angle)
 	c[Y] = t[Y];
 }
 
-void	rver()
+void	rver(float v[3], float a, float ret[3])
 {
+	float u[3];
 
-}
-
-void	rhor()
-{
+	u[X] = v[Z];
+	u[Y] = 0;
+	u[Z] = -v[Z];
+	normalize_vect(u);
 	
+	ret[X] = v[X] * (u[X] * u[X] * (1 - cos(a)) + cos(a))
+		+ v[Y] * (u[X] * u[Y] * (1 - cos(a)) + u[Z] * sin(a))
+		+ v[Z] * (u[X] * u[Z] * (1 - cos(a)) + u[Y] * sin(a));
 }
 
-int 	main()
+void	rhor(float v[3], float ang, float ret[3])
 {
-	float x[3];
-	x[0] = 0.7;
-	x[1] = 0;
-	x[2] = 0.7;
-	ry(x, 45);
-	printf("%f %f %f\n", x[0], x[1], x[2]);
+	ret[X] = (v[X] * cos(ang)) + (v[Z] * sin(ang) * -1);
+	ret[Y] = v[Y];
+	ret[Z] = (v[X] * sin(ang)) + (v[Z] * cos(ang));
 }
+
+/*int		main()
+{
+	float v[3];
+	float r[3];
+	v[X] = 0;
+	v[Y] = 0;
+	v[Z] = 1;
+	rhor(v, 90, r);
+	afv("r ", r);
+}*/

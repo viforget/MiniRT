@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/17 15:02:39 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/18 13:25:35 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,12 @@ int		calc_light(float c[3], int color, t_arg arg);
 int		get_lig(char **split, t_arg *arg);
 
 /*
+** ROTATION.C
+*/
+
+void	rhor(float v[3], float ang, float ret[3]);
+
+/*
 **  UTILS.C
 */
 
@@ -202,6 +208,7 @@ int		light_color(int color, float intensity, int light);
 **	UTILS3.C
 */
 
+float	calc_angle(float fov, int res, int x);
 double	normalize_vect(float v[3]);
 
 /*
