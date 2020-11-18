@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/18 13:44:03 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/18 15:13:19 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 	int 	y;
 	float	p[3];
 	float	v[3];
+	float	t[3];
 	int		color;
 	int		*display;
 
@@ -64,13 +65,15 @@ void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 		{
 			p[X] = cam->c[X] + ((- (arg.res_x / 2) + x) * 0.1);
 			//p[X] = cam->c[X];
-			p[Y] = cam->c[Y] + ((- (arg.res_y / 2) + y) * 0.075);
-			//p[Y] = cam->c[Y];
+			//p[Y] = cam->c[Y] + ((- (arg.res_y / 2) + y) * 0.075);
+			p[Y] = cam->c[Y];
 			p[Z] = cam->c[Z];
-			
+
 			v[Y] = 0;
-			rhor(cam->vec, calc_angle(cam->fov, arg.res_x, x), v);
-			color = call_pixel(arg, cam->vec, p);
+			rhor(cam->vec, calc_angle_x(cam->fov, arg.res_x, x), t);
+			rver(t, calc_angle_y(cam->fov, arg.res_x, y - (arg.res_y / 2)),
+					v);
+			color = call_pixel(arg, v, p);
 			display[y * arg.res_x + x] = color;
 			x++;
 		}
