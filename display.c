@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/18 15:13:19 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/20 14:01:20 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 		x = 0;
 		while(x < arg.res_x)
 		{
-			p[X] = cam->c[X] + ((- (arg.res_x / 2) + x) * 0.1);
-			//p[X] = cam->c[X];
+			//p[X] = cam->c[X] + ((- (arg.res_x / 2) + x) * 0.1);
+			p[X] = cam->c[X];
 			//p[Y] = cam->c[Y] + ((- (arg.res_y / 2) + y) * 0.075);
 			p[Y] = cam->c[Y];
 			p[Z] = cam->c[Z];
