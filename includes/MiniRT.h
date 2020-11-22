@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/18 15:08:40 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/22 14:26:44 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define RED 0
 # define GREEN 1
 # define BLUE 2
-# define ZE 0.002
+# define ZE 0.02
 
 /*
 ** STRUCTURES
@@ -141,6 +141,15 @@ void	vect_to(float ori[3], float des[3], float v[3], double *d);
 */
 
 int		get_cam(char **split, t_arg *arg);
+
+/*
+** COLOR.C
+*/
+
+void	bzero_vect(float v[3]);
+int		v_to_color(float v[3]);
+void	intens_add(float col[3], int l_color, float intensity, int color);
+float	rat_ang(float p[3], float ct[3], float v[3]);
 
 /*
 ** DISPLAY.C

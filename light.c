@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 13:22:55 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/17 15:00:02 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/22 14:36:09 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ int		calc_light(float c[3], int color, t_arg arg)
 	t_obj	*obj;
 	char	check;
 	float	v[3];
-	int 	ret;
+	float	r_col[3];
 	double	dist;
-	
-	ret = light_color(color, arg.a_rat, arg.a_color);
+
+	bzero_vect(r_col);
+	intens_add(r_col, arg.a_color, arg.a_rat, color);
 	light = arg.lig;
 	while(light)
 	{
@@ -38,16 +39,17 @@ int		calc_light(float c[3], int color, t_arg arg)
 		while(obj && check == 1)
 		{
 			if (verif(dist_obj(obj, v, c), dist))
-			{
 				check = 0;
-			}
 			obj = obj->next;
 		}
 		if (check == 1)
-			ret = light_color(color, light->rat, light->color);
+		{
+			//rat_ang(c, obj->c0/*function foret de if here*/, v);
+			intens_add(r_col, light->color, light->rat, color);
+		}
 		light = light->next;
 	}
-	return (ret);
+	return (v_to_color(r_col));
 }
 
 void	bzero_lig(t_lig *lig)
