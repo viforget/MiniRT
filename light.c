@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 13:22:55 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/22 14:36:09 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/22 15:00:03 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		verif(float dist_obj, float dist_light)
 	return (1);
 }
 
-int		calc_light(float c[3], int color, t_arg arg)
+int		calc_light(float c[3], int color, t_arg arg, float ct[3])
 {
 	t_lig	*light;
 	t_obj	*obj;
@@ -44,8 +44,8 @@ int		calc_light(float c[3], int color, t_arg arg)
 		}
 		if (check == 1)
 		{
-			//rat_ang(c, obj->c0/*function foret de if here*/, v);
-			intens_add(r_col, light->color, light->rat, color);
+			//printf("%f\n", rat_ang(c, ct, v) * light->rat);
+			intens_add(r_col, light->color, rat_ang(c, ct, v) * light->rat, color);
 		}
 		light = light->next;
 	}

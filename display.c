@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/20 14:01:20 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/22 15:23:06 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		call_pixel(t_arg arg, float v[3], float p[3])
 	float	dist;
 	float	buf;
 	int		color;
+	float	*ct[3];
 
 	cobj = arg.obj;
 	color = 0;
@@ -30,13 +31,14 @@ int		call_pixel(t_arg arg, float v[3], float p[3])
 		{	
 			dist = buf;
 			color = cobj->color;
+			*ct = cobj->c0;//Foret de if
 		}
 		cobj = cobj->next;
 	}
 	if (dist > ZE)
 	{
 		calc_coord(p, v, dist, temp);
-		color = calc_light(temp, color, arg);
+		color = calc_light(temp, color, arg, *ct);
 	}
 	return (color);
 	

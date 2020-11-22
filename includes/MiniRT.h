@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/22 14:26:44 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/22 14:39:49 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,7 @@ int		get_tr(char **split, t_arg *arg);
 ** LIGHT.C 
 */
 
-int		calc_light(float c[3], int color, t_arg arg);
+int		calc_light(float c[3], int color, t_arg arg, float ct[3]);
 int		get_lig(char **split, t_arg *arg);
 
 /*
