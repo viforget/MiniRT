@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 13:22:55 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/22 15:00:03 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/24 12:30:23 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		calc_light(float c[3], int color, t_arg arg, float ct[3])
 		check = 1;
 		while(obj && check == 1)
 		{
+			afv("v", v);
 			if (verif(dist_obj(obj, v, c), dist))
 				check = 0;
 			obj = obj->next;

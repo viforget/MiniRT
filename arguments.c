@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:20:45 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/08 16:09:31 by viforget         ###   ########.fr       */
+/*   Updated: 2020/11/24 09:44:55 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,10 @@ t_arg	get_arg(char *file)
 	char	*str;
 	char	**split;
 
-	fd = open(file, O_RDONLY);
 	arg = bzero_arg(arg);
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (arg);
 	while (get_next_line(fd, &str) && str)
 	{
 		if (do_line(ft_split(str, ' '), &arg, 0) == 0)
