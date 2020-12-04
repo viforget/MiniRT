@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 12:48:30 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/22 15:23:30 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/04 14:01:16 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	intens_add(float col[3], int l_color, float intensity, int color)
 	float	l_c[3];
 	float	o_c[3];
 
+	if (intensity < 0)
+		intensity = 0;
 	col_to_com(l_color, l_c);
 	col_to_com(color, o_c);
 	col[RED] += l_c[RED] * intensity * o_c[RED];
@@ -63,10 +65,36 @@ float	diff_angle(float u[3], float v[3])
 	return (acos(ang) * (180 / M_PI));
 }
 
-float	rat_ang(float p[3], float ct[3], float v[3])
+float	rat_ang(float p[3], float v[3], t_obj *obj)
 {
-	float	d[3];
+	float d[3];
+	float ret;
 
-	vect_to(ct, p, d, NULL);
-	return ((90 - diff_angle(v, d)) / 90);
+	ret = 0;
+	if (obj->type == SP)
+	{
+		vect_to(obj->c0, p, d, NULL);
+		ret =  1 - diff_angle(v,d);
+	}
+	else if (obj->type == PL)
+	{
+		ret = 0;
+	}
+	ret /= 90;
+	return (ret > 1 ? 1 - (ret - 1) : ret);
 }
+
+/*int main()
+{
+	float p[3] = {0, 0, 30};
+	float v[3] = {0, 0, 1};
+	float ct[3] = {0, 0, 35};
+	t_obj *obj;
+	obj = malloc(sizeof(t_obj));
+	obj->type = SP;
+	obj->c0[0] = 0;
+	obj->c0[1] = -5;
+	obj->c0[2] = 30;
+	obj->dia = 10;
+	printf("%g\n", ang_obj(p, v, obj));
+}*/

@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 13:22:55 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/24 12:30:23 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/04 14:05:52 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,38 @@
 
 int		verif(float dist_obj, float dist_light)
 {
+	printf("%g %g\n", dist_obj, dist_light);
 	if (dist_obj == -1 || dist_obj - ZE > dist_light)
 		return (0);
 	return (1);
 }
 
-int		calc_light(float c[3], int color, t_arg arg, float ct[3])
+int		calc_light(float c[3], int color, t_arg arg, t_obj *obj)
 {
 	t_lig	*light;
-	t_obj	*obj;
+	t_obj	*cobj;
 	char	check;
 	float	v[3];
 	float	r_col[3];
 	double	dist;
 
 	bzero_vect(r_col);
-	intens_add(r_col, arg.a_color, arg.a_rat, color);
+	intens_add(r_col, arg.a_color, arg.a_rat, obj->color);
 	light = arg.lig;
 	while(light)
 	{
 		vect_to(c, light->c, v, &dist);
-		obj = arg.obj;
+		cobj = arg.obj;
 		check = 1;
-		while(obj && check == 1)
+		while(cobj && check == 1)
 		{
-			afv("v", v);
-			if (verif(dist_obj(obj, v, c), dist))
+			if (verif(dist_obj(cobj, v, c), dist))
 				check = 0;
-			obj = obj->next;
+			cobj = cobj->next;
 		}
 		if (check == 1)
 		{
-			//printf("%f\n", rat_ang(c, ct, v) * light->rat);
-			intens_add(r_col, light->color, rat_ang(c, ct, v) * light->rat, color);
+			intens_add(r_col, light->color, rat_ang(c, v, obj) * light->rat, obj->color);
 		}
 		light = light->next;
 	}

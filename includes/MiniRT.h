@@ -5,6 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/24 12:39:20 by viforget          #+#    #+#             */
+/*   Updated: 2020/12/04 12:52:50 by viforget         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MiniRT.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
 /*   Updated: 2020/11/24 10:28:23 by viforget         ###   ########.fr       */
 /*                                                                            */
@@ -149,7 +161,7 @@ int		get_cam(char **split, t_arg *arg);
 void	bzero_vect(float v[3]);
 int		v_to_color(float v[3]);
 void	intens_add(float col[3], int l_color, float intensity, int color);
-float	rat_ang(float p[3], float ct[3], float v[3]);
+float	rat_ang(float p[3], float v[3], t_obj *obj);
 
 /*
 ** DISPLAY.C
@@ -183,7 +195,7 @@ int		get_tr(char **split, t_arg *arg);
 ** LIGHT.C 
 */
 
-int		calc_light(float c[3], int color, t_arg arg, float ct[3]);
+int		calc_light(float c[3], int color, t_arg arg, t_obj *obj);
 int		get_lig(char **split, t_arg *arg);
 
 /*

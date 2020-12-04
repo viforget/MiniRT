@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/24 11:56:28 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/04 13:12:30 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,27 @@ int		call_pixel(t_arg arg, float v[3], float p[3])
 	float	temp[3];
 	float	dist;
 	float	buf;
-
+	t_obj	*obj;
 	int		color;
-	float	ct[3];
 
+	obj = NULL;
 	cobj = arg.obj;
-	color = 0;
 	dist = -1;
+	color = 0;
 	while(cobj)
 	{
 		buf = dist_obj(cobj, v, p);
 		if (buf >= 0 && (buf < dist || dist == -1))
 		{	
 			dist = buf;
-			color = cobj->color;
-			ct[X] = cobj->c0[X];//Foret de if
-			ct[Y] = cobj->c0[Y];
-			ct[Z] = cobj->c0[Z];
-			if (cobj->type == PL)
-				vector_sub(p, cobj->vec, ct);
+			obj = cobj; //plus de foret de if
 		}
 		cobj = cobj->next;
 	}
 	if (dist > ZE)
 	{
 		calc_coord(p, v, dist, temp);
-		color = calc_light(temp, color, arg, ct);
+		color = calc_light(temp, obj->color, arg, obj);
 	}
 	return (color);
 	
@@ -70,12 +65,9 @@ void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 		x = 0;
 		while(x < arg.res_x)
 		{
-			//p[X] = cam->c[X] + ((- (arg.res_x / 2) + x) * 0.1);
 			p[X] = cam->c[X];
-			//p[Y] = cam->c[Y] + ((- (arg.res_y / 2) + y) * 0.075);
 			p[Y] = cam->c[Y];
 			p[Z] = cam->c[Z];
-
 			v[Y] = 0;
 			rhor(cam->vec, calc_angle_x(cam->fov, arg.res_x, x), t);
 			rver(t, calc_angle_y(cam->fov, arg.res_x, y - (arg.res_y / 2)),
