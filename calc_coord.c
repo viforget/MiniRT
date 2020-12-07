@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 08:42:22 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/04 18:16:14 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/07 13:20:25 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	calc_coord(float c[3], float v[3], float dist, float ret[3])
 {
 	float f;
 
-	ret[X] = v[X] * dist; 
-	ret[Y] = v[Y] * dist; 
+	ret[X] = v[X] * dist;
+	ret[Y] = v[Y] * dist;
 	ret[Z] = v[Z] * dist;
 	ret[X] += c[X];
 	ret[Y] += c[Y];

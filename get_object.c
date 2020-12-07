@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 18:38:03 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/07 13:37:48 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/07 14:28:13 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		get_sq(char **split, t_arg *arg)
 	sq->type = SQ;
 	coordinate(split[1], sq->c0);
 	coordinate(split[2], sq->vec);
+	normalize_vect(sq->vec);
 	sq->hight = atof(split[3]);
 	sq->color = get_color(split[4]);
 	arg->obj = add_object(arg->obj, sq);
@@ -69,6 +70,7 @@ int		get_cy(char **split, t_arg *arg)
 	cy->type = CY;
 	coordinate(split[1], cy->c0);
 	coordinate(split[2], cy->vec);
+	normalize_vect(cy->vec);
 	cy->dia = atof(split[3]);
 	cy->hight = atof(split[4]);
 	cy->color = get_color(split[5]);

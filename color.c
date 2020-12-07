@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 12:48:30 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/05 13:45:10 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/07 13:38:34 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,12 @@ float	rat_ang(float p[3], float v[3], t_obj *obj)
 	if (obj->type == SP)
 	{
 		vect_to(obj->c0, p, d, NULL);
-		ret =  90 - diff_angle(v, d);
+		ret = 90 - diff_angle(v, d);
 	}
 	else if (obj->type == PL)
 	{
-		invert_vector(obj->vec, d);
-		ret = 90 - diff_angle(d, v);
+		ret = diff_angle(v, obj->vec) - 90;
 	}
 	ret /= 90;
 	return (ret > 1 ? 1 - (ret - 1) : ret);
 }
-
-/*int main()
-{
-	float p[3] = {0, 0, 30};
-	float v[3] = {0, 0, 1};
-	float ct[3] = {0, 0, 35};
-	t_obj *obj;
-	obj = malloc(sizeof(t_obj));
-	obj->type = SP;
-	obj->c0[0] = 0;
-	obj->c0[1] = -5;
-	obj->c0[2] = 30;
-	obj->dia = 10;
-	printf("%g\n", ang_obj(p, v, obj));
-}*/
