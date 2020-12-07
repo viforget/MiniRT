@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 18:38:03 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/08 14:43:52 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/07 13:37:48 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		get_pl(char **split, t_arg *arg)
 	pl->type = PL;
 	coordinate(split[1], pl->c0);
 	coordinate(split[2], pl->vec);
+	normalize_vect(pl->vec);
 	pl->color = get_color(split[3]);
 	arg->obj = add_object(arg->obj, pl);
 	return (1);
