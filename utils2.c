@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 12:33:04 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/11 11:14:46 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/07 14:42:21 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ float	radian(float angle)
 
 int		light_color(int color, float intensity, int light)
 {
-	int 	col[3];
+	int		col[3];
 	float	lig[3];
 
 	lig[RED] = (light / 0x10000 * intensity) / 255;

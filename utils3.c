@@ -6,11 +6,18 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 10:55:51 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/18 15:09:06 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/07 15:18:42 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MiniRT.h"
+
+void	bzero_vect(float v[3])
+{
+	v[0] = 0;
+	v[1] = 0;
+	v[2] = 0;
+}
 
 float	calc_angle_x(float fov, int res, int x)
 {

@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 13:22:55 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/05 13:39:02 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/07 15:19:46 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,33 @@ int		verif(float dist_obj, float dist_light)
 	return (1);
 }
 
-int		calc_light(float c[3], int color, t_arg arg, t_obj *obj)
+int		calc_light(float c[3], t_arg arg, t_obj *obj, char check)
 {
 	t_lig	*light;
 	t_obj	*cobj;
-	char	check;
 	float	v[3];
-	float	r_col[3];
+	float	r_c[3];
 	double	dist;
 
-	bzero_vect(r_col);
-	intens_add(r_col, arg.a_color, arg.a_rat, obj->color);
+	bzero_vect(r_c);
+	intens_add(r_c, arg.a_color, arg.a_rat, obj->color);
 	light = arg.lig;
-	while(light)
+	while (light)
 	{
 		vect_to(c, light->c, v, &dist);
 		cobj = arg.obj;
 		check = 1;
-		while(cobj && check == 1)
-		{
+		while (cobj && check == 1)
 			if (verif(dist_obj(cobj, v, c), dist))
 				check = 0;
-			cobj = cobj->next;
-		}
+			else
+				cobj = cobj->next;
 		if (check == 1)
-		{
-			intens_add(r_col, light->color, rat_ang(c, v, obj) * light->rat, obj->color);
-		}
+			intens_add(r_c, light->color, rat_ang(c, v, obj)
+					* light->rat, obj->color);
 		light = light->next;
 	}
-	return (v_to_color(r_col));
+	return (v_to_color(r_c));
 }
 
 void	bzero_lig(t_lig *lig)

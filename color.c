@@ -6,18 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 12:48:30 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/07 13:38:34 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/07 15:18:45 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MiniRT.h"
-
-void	bzero_vect(float v[3])
-{
-	v[0] = 0;
-	v[1] = 0;
-	v[2] = 0;
-}
 
 int		v_to_color(float v[3])
 {

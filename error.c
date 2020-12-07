@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 14:22:43 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/21 10:46:32 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/07 15:28:30 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ void	del_obj(t_obj *obj)
 {
 	if (obj->next)
 		del_obj(obj->next);
-	free (obj);
+	free(obj);
 }
 
 void	del_cam(t_cam *cam)
 {
 	if (cam->next)
 		del_cam(cam->next);
-	free (cam);
+	free(cam);
 }
 
 void	del_lig(t_lig *lig)
 {
 	if (lig->next)
 		del_lig(lig->next);
-	free (lig);
+	free(lig);
 }
 
 int		get_error(t_arg arg, char **split)
@@ -51,4 +51,3 @@ int		get_error(t_arg arg, char **split)
 	ft_putstr("Error; problem with .rt file\n");
 	return (0);
 }
-

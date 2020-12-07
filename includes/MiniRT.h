@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/05 13:30:25 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/07 15:25:37 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@
 # define X 0
 # define Y 1
 # define Z 2
+# define A 0
+# define B 1
+# define C 2
 # define RED 0
 # define GREEN 1
 # define BLUE 2
@@ -146,7 +149,6 @@ int		get_cam(char **split, t_arg *arg);
 ** COLOR.C
 */
 
-void	bzero_vect(float v[3]);
 int		v_to_color(float v[3]);
 void	intens_add(float col[3], int l_color, float intensity, int color);
 float	rat_ang(float p[3], float v[3], t_obj *obj);
@@ -183,7 +185,7 @@ int		get_tr(char **split, t_arg *arg);
 ** LIGHT.C 
 */
 
-int		calc_light(float c[3], int color, t_arg arg, t_obj *obj);
+int		calc_light(float c[3], t_arg arg, t_obj *obj, char check);
 int		get_lig(char **split, t_arg *arg);
 
 /*
@@ -219,6 +221,7 @@ float	diff_angle(float u[3], float v[3]);
 **	UTILS3.C
 */
 
+void	bzero_vect(float v[3]);
 float	calc_angle_x(float fov, int res, int x);
 float	calc_angle_y(float fov, int res, int y);
 double	normalize_vect(float v[3]);
