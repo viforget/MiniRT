@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 12:48:30 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/07 15:18:45 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/08 15:44:54 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ float	rat_ang(float p[3], float v[3], t_obj *obj)
 	}
 	else if (obj->type == PL)
 	{
-		ret = diff_angle(v, obj->vec) - 90;
+		ret = fabs(diff_angle(v, obj->vec) - 90);
+		printf("%g\n", ret);
 	}
 	ret /= 90;
 	return (ret > 1 ? 1 - (ret - 1) : ret);
