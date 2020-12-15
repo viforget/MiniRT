@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/07 15:25:37 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/15 15:40:54 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,6 +225,7 @@ void	bzero_vect(float v[3]);
 float	calc_angle_x(float fov, int res, int x);
 float	calc_angle_y(float fov, int res, int y);
 double	normalize_vect(float v[3]);
+void	link_point(float p1[3], float p2[3], float ret[3]);
 
 /*
 ** VECTOR.C
@@ -233,6 +234,7 @@ double	normalize_vect(float v[3]);
 float	scal_vector(float v1[3], float v2[3]);
 void	vector_sub(float v1[3], float v2[3], float ret[3]);
 void	invert_vector(float v[3], float ret[3]);
-
+void	ortho_vector(float v[3], float u[3], float ret[3]);
+void	ortho_triangle(t_obj *triangle);
 
 #endif
