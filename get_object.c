@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 18:38:03 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/07 14:28:13 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/15 15:59:03 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ int		get_tr(char **split, t_arg *arg)
 	coordinate(split[1], tr->c0);
 	coordinate(split[2], tr->c1);
 	coordinate(split[3], tr->c2);
+	ortho_triangle(tr);
+	tr->vec[0] *= -1;
 	tr->color = get_color(split[4]);
 	arg->obj = add_object(arg->obj, tr);
 	return (1);

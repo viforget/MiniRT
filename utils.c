@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 20:53:31 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/07 14:41:54 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/09 15:36:05 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	afv(char *s, float v[3])
 {
 	if (s)
-		printf("%s : %f %f %f\n", s, v[0], v[1], v[2]);
+		printf("%s : %g %g %g\n", s, v[0], v[1], v[2]);
 	else
-		printf("%f %f %f\n", v[0], v[1], v[2]);
+		printf("%g %g %g\n", v[0], v[1], v[2]);
 }
 
 float	ft_atof(char *str)

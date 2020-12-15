@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 14:51:47 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/07 15:27:01 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/15 16:13:22 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ double	dist_sp(t_obj *obj, float v[3], float p[3])
 
 double	dist_pl(t_obj *obj, float v[3], float p[3])
 {
-	float	d;
+	double	d;
 	float	a_o;
 	float	d_po;
 	float	v_po[3];
@@ -54,11 +54,18 @@ double	dist_pl(t_obj *obj, float v[3], float p[3])
 	return (d);
 }
 
+double	dist_tr(t_obj *obj, float v[3], float p[3])
+{
+	return (dist_pl(obj, v, p));
+}
+
 double	dist_obj(t_obj *obj, float v[3], float p[3])
 {
 	if (obj->type == SP)
 		return (dist_sp(obj, v, p));
 	else if (obj->type == PL)
 		return (dist_pl(obj, v, p));
+	else if (obj->type == TR)
+		return (dist_tr(obj, v, p));
 	return (-1);
 }
