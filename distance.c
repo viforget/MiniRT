@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 14:51:47 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/15 16:13:22 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/18 14:06:33 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,33 @@ double	dist_pl(t_obj *obj, float v[3], float p[3])
 	return (d);
 }
 
-double	dist_tr(t_obj *obj, float v[3], float p[3])
+double	dist_tr(t_obj *tr, float v[3], float p[3])
 {
-	return (dist_pl(obj, v, p));
+	float edge[2][3];
+	float h[3];
+	float q[3];
+	float s[3];
+	float a[3];
+
+	vector_sub(tr->c1, tr->c0, edge[0]);
+	vector_sub(tr->c2, tr->c0, edge[1]);
+	ortho_vector(v, edge[1], h);
+	a[0] = scal_vector(edge[0], h);
+	if (a[0] > -ZE && a[0] < ZE)
+		return (-1);
+	a[0] = 1.0 / a[0];
+	vector_sub(p, tr->c0, s);
+	a[2] = a[0] * scal_vector(s, h);
+	if (a[2] < 0.0 || a[2] > 1.0)
+		return (-1);
+	ortho_vector(s, edge[0], h);
+	a[1] = a[0] * scal_vector(v, h);
+	if (a[1] < 0.0 || a[2] + a[1] > 1.0)
+		return (-1);
+	a[0] = a[0] * scal_vector(edge[1], h);
+	if (a[0] > ZE)
+		return (a[0]);
+	return (-1);
 }
 
 double	dist_obj(t_obj *obj, float v[3], float p[3])
