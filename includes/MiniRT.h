@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/15 15:40:54 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/21 14:09:13 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,12 @@ int		get_lig(char **split, t_arg *arg);
 
 void	rhor(float v[3], float ang, float ret[3]);
 void	rver(float v[3], float ang, float ret[3]);
+
+/*
+** SQUARE.C
+*/ 
+
+void	border(t_obj *sq);
 
 /*
 **  UTILS.C

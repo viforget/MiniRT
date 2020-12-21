@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 18:38:03 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/15 15:59:03 by viforget         ###   ########.fr       */
+/*   Updated: 2020/12/21 14:10:10 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		get_sq(char **split, t_arg *arg)
 	normalize_vect(sq->vec);
 	sq->hight = atof(split[3]);
 	sq->color = get_color(split[4]);
+	border(sq);
 	arg->obj = add_object(arg->obj, sq);
 	return (1);
 }
