@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/21 14:09:13 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/11 14:56:59 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@
 # define GREEN 1
 # define BLUE 2
 # define ZE 0.02
+# define NEXT 1
+# define PREV 2
 
 /*
 ** STRUCTURES
@@ -152,6 +154,12 @@ int		get_cam(char **split, t_arg *arg);
 int		v_to_color(float v[3]);
 void	intens_add(float col[3], int l_color, float intensity, int color);
 float	rat_ang(float p[3], float v[3], t_obj *obj);
+
+/*
+** CYLINDRE.C
+*/ 
+
+double	dist_cy(t_obj cy, float v[3], float p[3]);
 
 /*
 ** DISPLAY.C
