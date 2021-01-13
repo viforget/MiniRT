@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/07 15:50:02 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/13 18:16:57 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,6 @@ void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 	int		*display;
 
 	c[Y] = 0;
-	mlx.img = mlx_new_image(mlx.mlx, arg.res_x, arg.res_y);
-	display = (int *)mlx_get_data_addr(mlx.img, &mlx.bpp,
-		&mlx.size_l, &mlx.endian);
 	while (c[Y] < arg.res_y)
 	{
 		c[X] = 0;
@@ -68,7 +65,7 @@ void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 			rver(t, calc_angle_y(cam->fov, arg.res_x, c[Y] - (arg.res_y / 2)),
 					v);
 			call_pixel(arg, v, cam->c, &color);
-			display[c[Y] * arg.res_x + c[X]] = color;
+			mlx.disp[c[Y] * arg.res_x + c[X]] = color;
 			c[X]++;
 		}
 		c[Y]++;
