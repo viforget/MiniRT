@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 10:55:51 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/15 15:41:05 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/13 17:23:23 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ float	calc_angle_x(float fov, int res, int x)
 	float	div;
 
 	div = (float)x / res;
-	angle = (-fov / 2) + (fov * div);
+	angle = (fov / 2) - (fov * div);
 	return (radian(angle));
 }
 
