@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/13 18:08:28 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/13 18:16:00 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define ZE 0.02
 # define NEXT 1
 # define PREV 2
+# define NB_THREAD 10
 
 /*
 ** STRUCTURES
