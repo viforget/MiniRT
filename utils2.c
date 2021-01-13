@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 12:33:04 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/07 14:42:21 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/13 17:55:18 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ int		sizeof_tab(char **tab)
 {
 	int i;
 
+	i = 0;
+	if (!tab)
+		return (0);
 	while (tab[i])
 		i++;
 	return (i);

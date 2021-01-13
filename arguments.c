@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:20:45 by viforget          #+#    #+#             */
-/*   Updated: 2020/11/24 09:44:55 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/13 18:09:17 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ t_arg	bzero_arg(t_arg arg)
 
 int		do_line(char **split, t_arg *arg, int a)
 {
-	if (ft_strcmp(split[0], "R") == 0 && sizeof_tab(split) == 3)
+	if (sizeof_tab(split) == 0)
+		a = 1;
+	else if (ft_strcmp(split[0], "R") == 0 && sizeof_tab(split) == 3)
 		*arg = get_res(split, *arg, &a);
 	else if (ft_strcmp(split[0], "sp") == 0 && sizeof_tab(split) == 4)
 		a = get_sp(split, arg);
@@ -59,10 +61,8 @@ int		do_line(char **split, t_arg *arg, int a)
 		a = get_lig(split, arg);
 	else if (ft_strcmp(split[0], "A") == 0 && sizeof_tab(split) == 3)
 		*arg = get_amb(split, *arg, &a);
-	else if (sizeof_tab(split) == 0)
-		a = 1;
 	if (a == 0)
-		return (get_error(*arg, split));
+		return (get_error(*arg, split, 0));
 	ft_freeutab(split);
 	return (1);
 }
@@ -77,7 +77,10 @@ t_arg	get_arg(char *file)
 	arg = bzero_arg(arg);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
+	{
+		get_error(arg, NULL, 1);
 		return (arg);
+	}
 	while (get_next_line(fd, &str) && str)
 	{
 		if (do_line(ft_split(str, ' '), &arg, 0) == 0)

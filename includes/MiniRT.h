@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/11 14:56:59 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/13 18:08:28 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ typedef struct 	s_mlx
 	int			size_l;
 	int			bpp;
 	int			endian;
+	int			*disp;
 }				t_mlx;
 
 /*
@@ -177,7 +178,7 @@ double	dist_obj(t_obj *obj, float v[3], float p[3]);
 ** ERROR.C
 */
 
-int	get_error(t_arg arg, char **split);
+int	get_error(t_arg arg, char **split, int err);
 
 /*
 ** GET_OBJECT.C

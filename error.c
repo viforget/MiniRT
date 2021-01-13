@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 14:22:43 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/07 15:28:30 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/13 18:09:48 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	del_lig(t_lig *lig)
 	free(lig);
 }
 
-int		get_error(t_arg arg, char **split)
+int		get_error(t_arg arg, char **split, int err)
 {
 	if (arg.screen)
 		ft_freeutab(arg.screen);
@@ -47,7 +47,11 @@ int		get_error(t_arg arg, char **split)
 	if (arg.lig)
 		del_lig(arg.lig);
 	arg.lig = NULL;
-	ft_freeutab(split);
-	ft_putstr("Error; problem with .rt file\n");
+	if (split)
+		ft_freeutab(split);
+	if (err == 0)
+		ft_putstr("Error; problem with .rt file\n");
+	else if (err == 1)
+		ft_putstr("Error; file does not exit\n");
 	return (0);
 }
