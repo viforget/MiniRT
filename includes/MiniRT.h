@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/13 18:16:00 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/15 14:47:43 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,25 +91,9 @@ typedef struct		s_cam
 	float			c[3];
 	float			vec[3];
 	int				fov;
+	int				*disp;
 	struct	s_cam	*next;
 }					t_cam;
-
-/*
-** ARGUMENTS
-*/
-
-typedef struct 	s_arg
-{
-	int			res_y;
-	int			res_x;
-	char		save;
-	char		**screen;
-	float		a_rat;
-	int			a_color;
-	t_cam		*cam;
-	t_obj		*obj;
-	t_lig		*lig;
-}				t_arg;
 
 /*
 **  MLX
@@ -125,6 +109,24 @@ typedef struct 	s_mlx
 	int			endian;
 	int			*disp;
 }				t_mlx;
+
+/*
+** ARGUMENTS
+*/
+
+typedef struct 	s_arg
+{
+	int			res_y;
+	int			res_x;
+	char		save;
+	char		**screen;
+	float		a_rat;
+	int			a_color;
+	t_mlx		*mlx;
+	t_cam		*cam;
+	t_obj		*obj;
+	t_lig		*lig;
+}				t_arg;
 
 /*
 ** FUNCTIONS
@@ -147,6 +149,7 @@ void	vect_to(float ori[3], float des[3], float v[3], double *d);
 ** CAMERA.C 
 */
 
+t_cam	*p_last_cam(t_cam *cam);
 int		get_cam(char **split, t_arg *arg);
 
 /*

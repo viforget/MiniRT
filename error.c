@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 14:22:43 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/13 18:09:48 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/15 15:02:59 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	del_obj(t_obj *obj)
 
 void	del_cam(t_cam *cam)
 {
+	free(cam->disp);
 	if (cam->next)
 		del_cam(cam->next);
 	free(cam);

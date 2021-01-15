@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/13 18:16:57 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/15 15:29:05 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,9 @@ void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 			rver(t, calc_angle_y(cam->fov, arg.res_x, c[Y] - (arg.res_y / 2)),
 					v);
 			call_pixel(arg, v, cam->c, &color);
-			mlx.disp[c[Y] * arg.res_x + c[X]] = color;
+			cam->disp[c[Y] * arg.res_x + c[X]] = color;
 			c[X]++;
 		}
 		c[Y]++;
 	}
-	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, 0, 0);
 }
