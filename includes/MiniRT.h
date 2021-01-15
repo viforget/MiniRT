@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/15 14:47:43 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/15 16:23:42 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,7 @@ double	dist_cy(t_obj cy, float v[3], float p[3]);
 ** DISPLAY.C
 */
 
+void	display_screen_2(t_mlx *mlx, t_arg *arg, t_cam *cam);
 void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam);
 
 /*

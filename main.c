@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 02:54:03 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/15 15:57:46 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/15 16:23:55 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ int 	input(int key_in, t_arg *arg)
 			arg->cam = cam2->next;
 			arg->cam->next = cam;
 			cam2->next = NULL;
-			ft_memccpy(arg->mlx->disp, arg->cam->disp, -1, arg->res_x * arg->res_y * 4);
-			mlx_put_image_to_window(arg->mlx->mlx, arg->mlx->win, arg->mlx->img, 0, 0);
+			display_screen_2(arg->mlx, arg, arg->cam);
 		}
 	}	
 	else if (key_in == 0x7c)
@@ -48,8 +47,7 @@ int 	input(int key_in, t_arg *arg)
 			cam->next = arg->cam;
 			arg->cam->next = NULL;
 			arg->cam = cam2;
-			ft_memccpy(arg->mlx->disp, arg->cam->disp, -1, arg->res_x * arg->res_y * 4);
-			mlx_put_image_to_window(arg->mlx->mlx, arg->mlx->win, arg->mlx->img, 0, 0);
+			display_screen_2(arg->mlx, arg, arg->cam);
 		}
 	}
 	return (0);
@@ -96,8 +94,7 @@ int		main(int ac, char **av)
 	calc_screens(mlx, arg);
 	arg.mlx = &mlx;
 
-	ft_memccpy(mlx.disp, arg.cam->disp, -1, arg.res_x * arg.res_y * 4);
-	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, 0, 0);
+	display_screen_2(&mlx, &arg, arg.cam);
 
 	mlx_key_hook(mlx.win, input, &arg);
 	mlx_hook(mlx.win, 17, (1L << 17), &quit, NULL);
