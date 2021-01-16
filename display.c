@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/15 16:23:23 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/16 17:20:28 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,67 @@ void	display_screen_2(t_mlx *mlx, t_arg *arg, t_cam *cam)
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 
-void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
+void	thread_start(void *tmp)
+{
+	t_arg	*arg;
+	int		x;
+	int		y;
+	float	v[3];
+	float	t[3];
+	int 	color;
+
+	arg = (t_arg*)tmp;
+	while (arg->cam)
+	{
+		x = arg->th * arg->res_x / NB_THREAD;
+		while (x < (arg->th + 1) * arg->res_x / NB_THREAD)
+		{
+			y = 0;
+			while (y < arg->res_y)
+			{
+				rhor(arg->cam->vec, calc_angle_x(arg->cam->fov, arg->res_x, x), t);
+				rver(t, calc_angle_y(arg->cam->fov, arg->res_x, y - (arg->res_y / 2)), v);
+				call_pixel(*arg, v, arg->cam->c, &color);
+				arg->cam->disp[y * arg->res_x + x] = color;
+				y++;
+			}
+			x++;
+		}
+		arg->cam = arg->cam->next;
+	}
+	free(tmp);
+	pthread_exit(NULL);
+}
+
+void	calc_screen(t_mlx mlx, t_arg *arg)
+{
+	pthread_t	th[NB_THREAD];
+	t_arg		*tmp[NB_THREAD];
+	int			i;
+
+	i = 0;
+	while (i < NB_THREAD)
+	{
+		tmp[i] = malloc(sizeof(t_arg));
+		ft_memcpy((void*)tmp[i], (void*)arg, sizeof(t_arg));
+		//tmp[i] = arg;
+		tmp[i]->th = i;
+		if (pthread_create(&th[i], NULL, thread_start, (void *)tmp[i]))
+		{
+			ft_putendl("error with pthread_create");
+			exit(0);
+		}
+		i++;
+	}
+	while (i--)
+		if (pthread_join(th[i], NULL))
+		{
+			ft_putendl("error joining thread");
+			exit(0);
+		}
+}
+
+/*void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 {
 	int		c[2];
 	float	v[3];
@@ -76,4 +136,4 @@ void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
 		}
 		c[Y]++;
 	}
-}
+}*/

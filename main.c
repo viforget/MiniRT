@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 02:54:03 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/15 16:23:55 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:49:25 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	mlx_setup(t_mlx *mlx, t_arg arg, char *title)
 	//printf("bpp: %d\n size_l : %d\n endian: %d\n", mlx->bpp, mlx->size_l, mlx->endian);
 }
 
-void	calc_screens(t_mlx mlx, t_arg arg)
+/*void	calc_screens(t_mlx mlx, t_arg arg)
 {
 	t_cam *cam;
 
@@ -73,7 +73,7 @@ void	calc_screens(t_mlx mlx, t_arg arg)
 		display_screen(mlx, arg, cam);
 		cam = cam->next;
 	}
-}
+}*/
 
 int		main(int ac, char **av)
 {
@@ -91,7 +91,8 @@ int		main(int ac, char **av)
 	if (arg.cam == NULL)
 		return (0);
 	mlx_setup(&mlx, arg, av[1]);
-	calc_screens(mlx, arg);
+	//calc_screens(mlx, arg);
+	calc_screen(mlx, &arg);
 	arg.mlx = &mlx;
 
 	display_screen_2(&mlx, &arg, arg.cam);

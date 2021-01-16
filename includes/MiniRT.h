@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/15 16:23:42 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/16 17:23:13 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 #include <math.h>
 #include <mlx.h>
+#include <pthread.h>
 
 #include <stdio.h>
 
@@ -46,7 +47,7 @@
 # define ZE 0.02
 # define NEXT 1
 # define PREV 2
-# define NB_THREAD 10
+# define NB_THREAD 600
 
 /*
 ** STRUCTURES
@@ -116,6 +117,7 @@ typedef struct 	s_mlx
 
 typedef struct 	s_arg
 {
+	int			th;
 	int			res_y;
 	int			res_x;
 	char		save;
@@ -171,7 +173,7 @@ double	dist_cy(t_obj cy, float v[3], float p[3]);
 */
 
 void	display_screen_2(t_mlx *mlx, t_arg *arg, t_cam *cam);
-void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam);
+void	calc_screen(t_mlx mlx, t_arg *arg);
 
 /*
 ** DISTANCE.C

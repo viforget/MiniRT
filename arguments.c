@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:20:45 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/14 16:28:13 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:54:49 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_arg	get_amb(char **split, t_arg arg, int *a)
 
 t_arg	bzero_arg(t_arg arg)
 {
+	arg.th = -1;
 	arg.cam = NULL;
 	arg.obj = NULL;
 	arg.lig = NULL;
