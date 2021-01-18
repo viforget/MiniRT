@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 02:54:03 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/16 16:49:25 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/17 14:32:01 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int 	input(int key_in, t_arg *arg)
 			arg->cam = cam2->next;
 			arg->cam->next = cam;
 			cam2->next = NULL;
-			display_screen_2(arg->mlx, arg, arg->cam);
+			display_screen(arg->mlx, arg, arg->cam);
 		}
 	}	
 	else if (key_in == 0x7c)
@@ -47,7 +47,7 @@ int 	input(int key_in, t_arg *arg)
 			cam->next = arg->cam;
 			arg->cam->next = NULL;
 			arg->cam = cam2;
-			display_screen_2(arg->mlx, arg, arg->cam);
+			display_screen(arg->mlx, arg, arg->cam);
 		}
 	}
 	return (0);
@@ -63,18 +63,6 @@ void	mlx_setup(t_mlx *mlx, t_arg arg, char *title)
 	//printf("bpp: %d\n size_l : %d\n endian: %d\n", mlx->bpp, mlx->size_l, mlx->endian);
 }
 
-/*void	calc_screens(t_mlx mlx, t_arg arg)
-{
-	t_cam *cam;
-
-	cam = arg.cam;
-	while (cam)
-	{
-		display_screen(mlx, arg, cam);
-		cam = cam->next;
-	}
-}*/
-
 int		main(int ac, char **av)
 {
 	int		i;
@@ -87,17 +75,20 @@ int		main(int ac, char **av)
 		ft_putendl("Error: no file");
 		return (0);
 	}
-	arg = get_arg(av[1]);
+	arg = get_arg(av);
 	if (arg.cam == NULL)
-		return (0);
-	mlx_setup(&mlx, arg, av[1]);
-	//calc_screens(mlx, arg);
+		return (0); //CAS ERREUR ICI
+	if (arg.save == 0)
+		mlx_setup(&mlx, arg, av[1]);
 	calc_screen(mlx, &arg);
 	arg.mlx = &mlx;
-
-	display_screen_2(&mlx, &arg, arg.cam);
-
-	mlx_key_hook(mlx.win, input, &arg);
-	mlx_hook(mlx.win, 17, (1L << 17), &quit, NULL);
-	mlx_loop(mlx.mlx);
+	if (arg.save == 0)
+	{
+		display_screen(&mlx, &arg, arg.cam);
+		mlx_key_hook(mlx.win, input, &arg);
+		mlx_hook(mlx.win, 17, (1L << 17), &quit, NULL);
+		mlx_loop(mlx.mlx);
+	}
+	else
+		bmp_save(arg);
 }

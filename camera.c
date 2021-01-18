@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 12:26:37 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/15 15:29:01 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/17 13:54:58 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,17 @@ int		get_cam(char **split, t_arg *arg)
 {
 	t_cam *cam;
 
-	if (!(cam = malloc(sizeof(t_cam))))
-		return (0);
-	bzero_cam(cam);
-	coordinate(split[1], cam->c);
-	cam->disp = ft_calloc(arg->res_x * arg->res_y, sizeof(int));
-	coordinate(split[2], cam->vec);
-	normalize_vect(cam->vec);
-	cam->fov = ft_atoi(split[3]);
-	arg->cam = add_cam(arg->cam, cam);
+	if (arg->save == 0 || arg->cam == NULL)
+	{
+		if (!(cam = malloc(sizeof(t_cam))))
+			return (0);
+		bzero_cam(cam);
+		coordinate(split[1], cam->c);
+		cam->disp = ft_calloc(arg->res_x * arg->res_y, sizeof(int));
+		coordinate(split[2], cam->vec);
+		normalize_vect(cam->vec);
+		cam->fov = ft_atoi(split[3]);
+		arg->cam = add_cam(arg->cam, cam);
+	}
 	return (1);
 }

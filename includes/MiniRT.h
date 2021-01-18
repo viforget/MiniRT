@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/16 17:23:13 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/17 14:14:10 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ typedef struct 	s_arg
 	int			res_y;
 	int			res_x;
 	char		save;
-	char		**screen;
+	char		*name;
 	float		a_rat;
 	int			a_color;
 	t_mlx		*mlx;
@@ -138,7 +138,13 @@ typedef struct 	s_arg
 ** ARGUMENTS.C
 */
 
-t_arg	get_arg(char * str);
+t_arg	get_arg(char **str);
+
+/*
+** BMP.C
+*/
+
+void	bmp_save(t_arg arg);
 
 /*
 **	CALC_COORD.C
@@ -172,7 +178,7 @@ double	dist_cy(t_obj cy, float v[3], float p[3]);
 ** DISPLAY.C
 */
 
-void	display_screen_2(t_mlx *mlx, t_arg *arg, t_cam *cam);
+void	display_screen(t_mlx *mlx, t_arg *arg, t_cam *cam);
 void	calc_screen(t_mlx mlx, t_arg *arg);
 
 /*

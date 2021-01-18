@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/16 17:20:28 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/17 14:05:23 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ int		call_pixel(t_arg arg, float v[3], float p[3], int *color)
 	return (*color);
 }
 
-void	display_screen_2(t_mlx *mlx, t_arg *arg, t_cam *cam)
+void	display_screen(t_mlx *mlx, t_arg *arg, t_cam *cam)
 {
 	ft_memccpy(mlx->disp, cam->disp, -1, arg->res_x * arg->res_y * 4);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 
-void	thread_start(void *tmp)
+void	*thread_start(void *tmp)
 {
 	t_arg	*arg;
 	int		x;

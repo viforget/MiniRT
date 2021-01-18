@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 14:22:43 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/15 15:02:59 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/17 14:17:25 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,6 @@ void	del_lig(t_lig *lig)
 
 int		get_error(t_arg arg, char **split, int err)
 {
-	if (arg.screen)
-		ft_freeutab(arg.screen);
-	arg.screen = NULL;
 	if (arg.obj)
 		del_obj(arg.obj);
 	arg.obj = NULL;

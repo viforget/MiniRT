@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:20:45 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/16 16:54:49 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/17 14:16:37 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ t_arg	get_res(char **split, t_arg arg, int *a)
 {
 	arg.res_x = ft_atoi(split[1]);
 	arg.res_y = ft_atoi(split[2]);
-	if (!(arg.screen = ft_settab(arg.res_y, arg.res_x)))
-		*a = 0;
 	*a = 1;
 	return (arg);
 }
@@ -36,7 +34,7 @@ t_arg	bzero_arg(t_arg arg)
 	arg.cam = NULL;
 	arg.obj = NULL;
 	arg.lig = NULL;
-	arg.screen = NULL;
+	arg.name = NULL;
 	return (arg);
 }
 
@@ -68,7 +66,7 @@ int		do_line(char **split, t_arg *arg, int a)
 	return (1);
 }
 
-t_arg	get_arg(char *file)
+t_arg	get_arg(char **file)
 {
 	t_arg	arg;
 	int		fd;
@@ -76,7 +74,13 @@ t_arg	get_arg(char *file)
 	char	**split;
 
 	arg = bzero_arg(arg);
-	fd = open(file, O_RDONLY);
+	if (file[2] && ft_strcmp(file[2], "-save") == 0)
+		arg.save = 1;
+	if (file[3])
+		arg.name = file[3];
+	else
+		arg.name = file[1];
+	fd = open(file[1], O_RDONLY);
 	if (fd < 0)
 	{
 		get_error(arg, NULL, 1);
