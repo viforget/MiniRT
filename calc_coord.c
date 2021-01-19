@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 08:42:22 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/07 13:20:25 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/19 15:07:55 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int		is_pos(float nb)
 
 void	calc_coord(float c[3], float v[3], float dist, float ret[3])
 {
-	float f;
-
 	ret[X] = v[X] * dist;
 	ret[Y] = v[Y] * dist;
 	ret[Z] = v[Z] * dist;

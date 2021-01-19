@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/17 14:14:10 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/19 15:25:07 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # define ZE 0.02
 # define NEXT 1
 # define PREV 2
-# define NB_THREAD 600
+# define NB_THREAD 1
 
 /*
 ** STRUCTURES
@@ -172,7 +172,7 @@ float	rat_ang(float p[3], float v[3], t_obj *obj);
 ** CYLINDRE.C
 */ 
 
-double	dist_cy(t_obj cy, float v[3], float p[3]);
+double	dist_cy(t_obj *cy, float v[3], float p[3]);
 
 /*
 ** DISPLAY.C
@@ -214,6 +214,7 @@ int		get_lig(char **split, t_arg *arg);
 ** ROTATION.C
 */
 
+void	rotation(float v[3], float u[3], float a, float ret[3]);
 void	rhor(float v[3], float ang, float ret[3]);
 void	rver(float v[3], float ang, float ret[3]);
 
@@ -253,7 +254,6 @@ void	bzero_vect(float v[3]);
 float	calc_angle_x(float fov, int res, int x);
 float	calc_angle_y(float fov, int res, int y);
 double	normalize_vect(float v[3]);
-void	link_point(float p1[3], float p2[3], float ret[3]);
 
 /*
 ** VECTOR.C

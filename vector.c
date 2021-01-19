@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:47:15 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/15 15:44:01 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/19 15:26:10 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	ortho_triangle(t_obj *triangle)
 	float v[3];
 	float u[3];
 
-	link_point(triangle->c0, triangle->c1, v);
+	vector_sub(triangle->c0, triangle->c1, v);
 	normalize_vect(v);
-	link_point(triangle->c1, triangle->c2, u);
+	vector_sub(triangle->c1, triangle->c2, u);
 	normalize_vect(u);
 	ortho_vector(v, u, triangle->vec);
 	normalize_vect(triangle->vec);

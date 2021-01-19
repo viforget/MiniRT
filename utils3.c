@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 10:55:51 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/15 15:31:37 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/19 15:23:03 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,4 @@ double	normalize_vect(float v[3])
 	v[Y] /= sum;
 	v[Z] /= sum;
 	return (sum);
-}
-
-void	link_point(float p1[3], float p2[3], float ret[3])
-{
-		ret[0] = p1[0] - p2[0];
-		ret[1] = p1[1] - p2[1];
-		ret[2] = p1[2] - p2[2];
 }

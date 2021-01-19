@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 14:51:47 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/06 15:32:17 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/19 14:44:32 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ double	dist_sp(t_obj *obj, float v[3], float p[3])
 	val[B] = 2 * scal_vector(v, di);
 	val[C] = scal_vector(di, di) - (obj->dia / 2) * (obj->dia / 2);
 	discr = val[B] * val[B] - 4 * val[A] * val[C];
-	if (val[B] * val[B] - 4 * val[A] * val[C] < ZE)
+	if (discr < ZE)
 		return (-1);
 	discr = sqrt(discr);
 	d1 = (-val[B] + discr) / 2;
@@ -111,5 +111,7 @@ double	dist_obj(t_obj *obj, float v[3], float p[3])
 		return (dist_tr(obj, v, p));
 	else if (obj->type == SQ)
 		return (dist_sq(obj, v, p));
+	else if (obj->type == CY)
+		return (dist_cy(obj, v, p));
 	return (-1);
 }
