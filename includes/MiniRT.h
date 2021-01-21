@@ -21,7 +21,7 @@
 #include "libft.h"
 
 #include <math.h>
-#include <mlx.h>
+//#include <mlx.h>
 #include <pthread.h>
 
 #include <stdio.h>
@@ -66,7 +66,7 @@ typedef struct		s_obj
 	float			c2[3];
 	float			vec[3];
 	float			dia;
-	float			hight;
+	float			height;
 	int				color;
 	struct s_obj	*next;
 }					t_obj;

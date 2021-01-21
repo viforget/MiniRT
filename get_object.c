@@ -54,7 +54,7 @@ int		get_sq(char **split, t_arg *arg)
 	coordinate(split[1], sq->c0);
 	coordinate(split[2], sq->vec);
 	normalize_vect(sq->vec);
-	sq->hight = atof(split[3]);
+	sq->height = atof(split[3]);
 	sq->color = get_color(split[4]);
 	border(sq);
 	arg->obj = add_object(arg->obj, sq);
@@ -73,8 +73,10 @@ int		get_cy(char **split, t_arg *arg)
 	coordinate(split[2], cy->vec);
 	normalize_vect(cy->vec);
 	cy->dia = atof(split[3]);
-	cy->hight = atof(split[4]);
+	cy->height = atof(split[4]);
 	cy->color = get_color(split[5]);
+	cy->c1[X] = cy->vec[X] / 2;
+	cy->c1[Y] = cy->vec[Y] / 2;
 	arg->obj = add_object(arg->obj, cy);
 	return (1);
 }
