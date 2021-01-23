@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 13:40:11 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/06 15:34:55 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/23 13:13:51 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	border(t_obj *sq)
 	float	b[3];
 	float	hg;
 
-	hg = sq->hight / 2;
+	hg = sq->height / 2;
 	sq->c2[X] = sq->c0[X] + (fabs(sq->vec[Y]) + fabs(sq->vec[Z])) * hg;
 	sq->c1[X] = sq->c0[X] - (fabs(sq->vec[Y]) + fabs(sq->vec[Z])) * hg;
 	sq->c2[Y] = sq->c0[Y] + (fabs(sq->vec[Z]) + fabs(sq->vec[X])) * hg;
