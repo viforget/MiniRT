@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 20:53:31 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/09 15:36:05 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/23 13:13:10 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ void	bzero_obj(t_obj *obj)
 	obj->vec[2] = 0;
 	obj->type = 0;
 	obj->dia = 0;
-	obj->hight = 0;
+	obj->height = 0;
 	obj->next = NULL;
 }
