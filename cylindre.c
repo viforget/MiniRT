@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 15:31:25 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/19 15:25:01 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/24 14:59:58 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,18 @@ double	reper_change(t_obj *cy, float v[3], float p[3])
 	c_v[X] = -c_v[X];
 	c_v[Y] = -c_v[Y];
 	c_v[Z] = -c_v[Z];
-	if (!calc_equ(c_p, c_v, cy->dia, inter))
+	if (!calc_equ(c_p2, c_v, cy->dia, inter))
 		return (-1);
-	vector_sub(p, inter[0], inter[0]);
-	vector_sub(p, inter[1], inter[1]);
+	vector_sub(c_p2, inter[0], inter[0]);
+	vector_sub(c_p2, inter[1], inter[1]);
 	r[0] = sqrtf(scal_vector(inter[0], inter[0]));
 	r[1] = sqrtf(scal_vector(inter[1], inter[1]));
 	if (inter[0][Z] > cy->height / 2 ||  inter[0][Z] < cy->height / -2)
 		r[0] = -1;
 	if (inter[1][Z] > cy->height / 2 ||  inter[1][Z] < cy->height / -2)
 		r[1] = -1;
-	return(r[0] < r[1] && r[0] > ZE ? r[0] : r[1]);
+	printf("%3f %3f %3f\n", r[0], r[1] , r[0] < r[1] || r[1] < ZE ? r[0] : r[1]);
+	return(r[0] < r[1] || r[1] < ZE ? r[0] : r[1]);
 }
 
 double	dist_cy(t_obj *cy, float v[3], float p[3])
