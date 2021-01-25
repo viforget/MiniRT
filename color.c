@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 12:48:30 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/21 14:34:00 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/25 16:29:42 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ float	rat_ang(float p[3], float v[3], t_obj *obj)
 	{
 		ret = fabs(diff_angle(v, obj->vec) - 90);
 	}
+	else if (obj->type == CY)
+		ret = cy_color(p, v, obj);
+	printf("%f\n", ret);
 	ret /= 90;
 	return (ret > 1 ? 1 - (ret - 1) : ret);
 }

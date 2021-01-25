@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 15:31:25 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/25 15:52:39 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/25 16:39:17 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int		check_equ(float p[3], float v[3], float dia, float ret[2][3])
 		buf = v[X];
 		v[X] = p[Z];
 		v[Z] = buf;
-		printf("Balise");
 		return(calc_equ(p, v, dia, ret));
 	}
 	return (-1);	
@@ -83,11 +82,8 @@ double	reper_change(t_obj *cy, float v[3], float p[3])
 	r[0] = 0;
 	r[1] = 0;
 
-	u[X] = cy->vec[X] / 2;
-	u[Y] = cy->vec[Y] / 2;
-	u[Z] = (1 + cy->vec[Z]) / 2;
+	half_vector(cy->vec, u);
 
-	normalize_vect(u);
 	rotation(v, u, radian(180), c_v);
 	vector_sub(p, cy->c0, c_p);
 	rotation(c_p, u, radian(180), c_p2);

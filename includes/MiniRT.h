@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/25 14:47:38 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/25 16:11:07 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,13 @@ float	rat_ang(float p[3], float v[3], t_obj *obj);
 */ 
 
 double	dist_cy(t_obj *cy, float v[3], float p[3]);
+
+/*
+** CY_COLOR.C
+*/
+
+void	half_vector(float v[3], float u[3]);
+float	cy_color(float p[3], float v[3], t_obj *cy);
 
 /*
 ** DISPLAY.C

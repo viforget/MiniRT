@@ -6,7 +6,7 @@
 #    By: viforget <viforget@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 07:57:46 by viforget          #+#    #+#              #
-#    Updated: 2021/01/17 14:10:38 by viforget         ###   ########.fr        #
+#    Updated: 2021/01/25 16:06:17 by viforget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC = main.c\
 	  square.c\
 	  cylindre.c\
 	  bmp.c\
+	  cy_color.c\
 	  Get_next_line/get_next_line.c
 
 O_FILES = $(SRC:%.c=%.o)
