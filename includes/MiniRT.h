@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/23 13:12:36 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/25 14:47:38 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define RED 0
 # define GREEN 1
 # define BLUE 2
-# define ZE 0.02
+# define ZE 0.002
 # define NEXT 1
 # define PREV 2
 # define NB_THREAD 1

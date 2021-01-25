@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/17 14:05:23 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/25 15:51:47 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void	*thread_start(void *tmp)
 	while (arg->cam)
 	{
 		x = arg->th * arg->res_x / NB_THREAD;
-		while (x < (arg->th + 1) * arg->res_x / NB_THREAD)
+		while (x  < (arg->th + 1) * arg->res_x / NB_THREAD)
 		{
 			y = 0;
-			while (y < arg->res_y)
+			while (y   < arg->res_y)
 			{
 				rhor(arg->cam->vec, calc_angle_x(arg->cam->fov, arg->res_x, x), t);
 				rver(t, calc_angle_y(arg->cam->fov, arg->res_x, y - (arg->res_y / 2)), v);
