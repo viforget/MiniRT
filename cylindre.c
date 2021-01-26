@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 15:31:25 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/25 16:39:17 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/26 16:55:59 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ double	reper_change(t_obj *cy, float v[3], float p[3])
 	float	c_p[3];
 	float	c_p2[3];
 	double	r[2];
-	float	inter[2][3];
-	float	inter2[2][3];
+	float	ir[2][3];
+	float	ir2[2][3];
 
 	r[0] = 0;
 	r[1] = 0;
@@ -88,21 +88,23 @@ double	reper_change(t_obj *cy, float v[3], float p[3])
 	vector_sub(p, cy->c0, c_p);
 	rotation(c_p, u, radian(180), c_p2);
 
-	if (calc_equ(c_p2, c_v, cy->dia, inter) == -1)
+	if (calc_equ(c_p2, c_v, cy->dia, ir) == -1)
 		return (-1);
 
-	if (inter[0][Z] > cy->height / 2 ||  inter[0][Z] < cy->height / -2)
+	if (ir[0][Z] > cy->height / 2 ||  ir[0][Z] < cy->height / -2 
+			|| (ir[0][X] - p[X]) / v[X] > 0)
 		r[0] = -1;
-	if (inter[1][Z] > cy->height / 2 ||  inter[1][Z] < cy->height / -2)
+	if (ir[1][Z] > cy->height / 2 ||  ir[1][Z] < cy->height / -2 
+			|| (ir[1][X] - p[X]) / v[X] > 0)
 		r[1] = -1;
 
-	vector_sub(inter[0], c_p2, inter2[0]);
-	vector_sub(inter[1], c_p2, inter2[1]);
+	vector_sub(ir[0], c_p2, ir2[0]);
+	vector_sub(ir[1], c_p2, ir2[1]);
 
 	if (r[0] == 0)
-		r[0] = sqrtf(scal_vector(inter2[0], inter2[0]));
+		r[0] = sqrtf(scal_vector(ir2[0], ir2[0]));
 	if (r[1] == 0)
-		r[1] = sqrtf(scal_vector(inter2[1], inter2[1]));
+		r[1] = sqrtf(scal_vector(ir2[1], ir2[1]));
 
 	return((r[0] < r[1] && r[0] > ZE) || r[1] < ZE ? r[0] : r[1]);
 }
@@ -112,7 +114,7 @@ double	dist_cy(t_obj *cy, float v[3], float p[3])
 	double a;
 
 	a = reper_change(cy, v, p);
-	if (a == INFINITY || a == NAN)
+	if (a == INFINITY || a != a)
 		return (-1);
 	return (a);
 }

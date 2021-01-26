@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/25 15:51:47 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:15:55 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		call_pixel(t_arg arg, float v[3], float p[3], int *color)
 
 void	display_screen(t_mlx *mlx, t_arg *arg, t_cam *cam)
 {
-	ft_memccpy(mlx->disp, cam->disp, -1, arg->res_x * arg->res_y * 4);
+	ft_memccpy(mlx->disp, cam->disp, -1, arg->res_x * arg->res_y * sizeof(int));
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 
@@ -74,6 +74,7 @@ void	*thread_start(void *tmp)
 				rhor(arg->cam->vec, calc_angle_x(arg->cam->fov, arg->res_x, x), t);
 				rver(t, calc_angle_y(arg->cam->fov, arg->res_x, y - (arg->res_y / 2)), v);
 				call_pixel(*arg, v, arg->cam->c, &color);
+				//call_pixel(*arg, arg->cam->vec, arg->cam->c, &color);
 				arg->cam->disp[y * arg->res_x + x] = color;
 				y++;
 			}

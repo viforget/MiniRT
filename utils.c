@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 20:53:31 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/23 13:13:10 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/26 13:39:37 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,17 @@ float	ft_atof(char *str)
 	float	temp;
 
 	nb = ft_atoi(str);
-	while (*str && *str != '.')
+	while (*str && *str != '.' && *str != ',')
 		str++;
+	if (*str != '.')
+		return (nb);
 	temp = ft_atoi(str + 1);
-	while (temp >= 1)
+	str++;
+	while (ft_isdigit(*str))
+	{
+		str++;
 		temp /= 10;
+	}
 	return (nb + temp);
 }
 
