@@ -6,13 +6,13 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 15:31:25 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/26 16:55:59 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/27 16:31:25 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MiniRT.h"
 
-int	calc_equ(float p[3], float v[3], float dia, float ret[2][3])
+int		circle_inter(float p[3], float v[3], float dia, float ret[2][3])
 {
 	float	a;
 	float	b;
@@ -55,17 +55,17 @@ int		check_equ(float p[3], float v[3], float dia, float ret[2][3])
 	float buf;
 
 	normalize_vect(v);
-	if (v[X] > ZE || v[X] < ZE * -1)
-		return (calc_equ(p, v, dia, ret));
-	else if (v[Z] > ZE || v[Z] < ZE * -1)
+	if (v[X] != 0)
+		return (circle_inter(p, v, dia, ret));
+	else if (v[Y] != 0)
 	{
 		buf = p[X];
-		p[X] = p[Z];
-		p[Z] = buf;
+		p[X] = p[Y];
+		p[Y] = buf;
 		buf = v[X];
-		v[X] = p[Z];
-		v[Z] = buf;
-		return(calc_equ(p, v, dia, ret));
+		v[X] = v[Y];
+		v[Y] = buf;
+		return(circle_inter(p, v, dia, ret));
 	}
 	return (-1);	
 }
@@ -88,14 +88,14 @@ double	reper_change(t_obj *cy, float v[3], float p[3])
 	vector_sub(p, cy->c0, c_p);
 	rotation(c_p, u, radian(180), c_p2);
 
-	if (calc_equ(c_p2, c_v, cy->dia, ir) == -1)
+	if (check_equ(c_p2, c_v, cy->dia, ir) == -1)
 		return (-1);
 
-	if (ir[0][Z] > cy->height / 2 ||  ir[0][Z] < cy->height / -2 
-			|| (ir[0][X] - p[X]) / v[X] > 0)
+	if (ir[0][Z] > cy->height / 2 ||  ir[0][Z] < cy->height / -2
+			|| (ir[0][X] - c_p2[X]) / c_v[X] < 0)
 		r[0] = -1;
-	if (ir[1][Z] > cy->height / 2 ||  ir[1][Z] < cy->height / -2 
-			|| (ir[1][X] - p[X]) / v[X] > 0)
+	if (ir[1][Z] > cy->height / 2 ||  ir[1][Z] < cy->height / -2
+			|| (ir[1][X] - c_p2[X]) / c_v[X] < 0)
 		r[1] = -1;
 
 	vector_sub(ir[0], c_p2, ir2[0]);
@@ -106,7 +106,11 @@ double	reper_change(t_obj *cy, float v[3], float p[3])
 	if (r[1] == 0)
 		r[1] = sqrtf(scal_vector(ir2[1], ir2[1]));
 
-	return((r[0] < r[1] && r[0] > ZE) || r[1] < ZE ? r[0] : r[1]);
+	if (r[0] < ZE)
+		return (r[1]);
+	if (r[1] < ZE)
+		return (r[0]);
+	return(r[0] < r[1] ? r[0] : r[1]);
 }
 
 double	dist_cy(t_obj *cy, float v[3], float p[3])
@@ -114,6 +118,7 @@ double	dist_cy(t_obj *cy, float v[3], float p[3])
 	double a;
 
 	a = reper_change(cy, v, p);
+	if (a != -1)
 	if (a == INFINITY || a != a)
 		return (-1);
 	return (a);

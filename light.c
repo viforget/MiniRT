@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 13:22:55 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/26 16:56:02 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/27 16:24:59 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int		calc_light(float c[3], t_arg arg, t_obj *obj, char check)
 		cobj = arg.obj;
 		check = 1;
 		while (cobj && check == 1)
-			if (verif(dist_obj(cobj, v, c), dist))
-				check = 0;
-			else
+			//if (verif(dist_obj(cobj, v, c), dist))
+			//	check = 0;
+			//else
 				cobj = cobj->next;
 		if (check == 1)
 			intens_add(r_c, light->color, rat_ang(c, v, obj)

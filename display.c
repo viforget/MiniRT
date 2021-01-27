@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/27 14:46:26 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/27 16:28:06 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ void	*thread_start(void *tmp)
 				call_pixel(*arg, v, arg->cam->c, &color);
 				//call_pixel(*arg, arg->cam->vec, arg->cam->c, &color);
 				arg->cam->disp[y * arg->res_x + x] = color;
-				if (color == -1)
-					printf("A\n");
 				y++;
 			}
 			x++;
