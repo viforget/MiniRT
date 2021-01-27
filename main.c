@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 02:54:03 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/26 17:17:00 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/27 14:44:48 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	mlx_setup(t_mlx *mlx, t_arg arg, char *title)
 	mlx->img = mlx_new_image(mlx->mlx, arg.res_x, arg.res_y);
 	mlx->disp = (int *)mlx_get_data_addr(mlx->img, &mlx->bpp,
 		&mlx->size_l, &mlx->endian);
-	//printf("bpp: %d\n size_l : %d\n endian: %d\n", mlx->bpp, mlx->size_l, mlx->endian);
+//	printf("bpp: %d\n size_l : %d\n endian: %d\n", mlx->bpp, mlx->size_l, mlx->endian);
 }
 
 int		main(int ac, char **av)

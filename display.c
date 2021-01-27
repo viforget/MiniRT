@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/26 17:15:55 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/27 14:46:26 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		call_pixel(t_arg arg, float v[3], float p[3], int *color)
 
 void	display_screen(t_mlx *mlx, t_arg *arg, t_cam *cam)
 {
-	ft_memccpy(mlx->disp, cam->disp, -1, arg->res_x * arg->res_y * sizeof(int));
+	ft_memcpy(mlx->disp, cam->disp, arg->res_x * arg->res_y * sizeof(int));
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 
@@ -69,13 +69,15 @@ void	*thread_start(void *tmp)
 		while (x  < (arg->th + 1) * arg->res_x / NB_THREAD)
 		{
 			y = 0;
-			while (y   < arg->res_y)
+			while (y  < arg->res_y)
 			{
 				rhor(arg->cam->vec, calc_angle_x(arg->cam->fov, arg->res_x, x), t);
 				rver(t, calc_angle_y(arg->cam->fov, arg->res_x, y - (arg->res_y / 2)), v);
 				call_pixel(*arg, v, arg->cam->c, &color);
 				//call_pixel(*arg, arg->cam->vec, arg->cam->c, &color);
 				arg->cam->disp[y * arg->res_x + x] = color;
+				if (color == -1)
+					printf("A\n");
 				y++;
 			}
 			x++;
@@ -97,7 +99,6 @@ void	calc_screen(t_mlx mlx, t_arg *arg)
 	{
 		tmp[i] = malloc(sizeof(t_arg));
 		ft_memcpy((void*)tmp[i], (void*)arg, sizeof(t_arg));
-		//tmp[i] = arg;
 		tmp[i]->th = i;
 		if (pthread_create(&th[i], NULL, thread_start, (void *)tmp[i]))
 		{
