@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/27 16:28:06 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/28 15:23:39 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	*thread_start(void *tmp)
 				rhor(arg->cam->vec, calc_angle_x(arg->cam->fov, arg->res_x, x), t);
 				rver(t, calc_angle_y(arg->cam->fov, arg->res_x, y - (arg->res_y / 2)), v);
 				call_pixel(*arg, v, arg->cam->c, &color);
-				//call_pixel(*arg, arg->cam->vec, arg->cam->c, &color);
+			//	call_pixel(*arg, arg->cam->vec, arg->cam->c, &color);
 				arg->cam->disp[y * arg->res_x + x] = color;
 				y++;
 			}

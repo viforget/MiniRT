@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 15:31:25 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/27 16:31:25 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/28 15:17:15 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int		circle_inter(float p[3], float v[3], float dia, float ret[2][3])
 int		check_equ(float p[3], float v[3], float dia, float ret[2][3])
 {
 	float buf;
-
+	
 	normalize_vect(v);
-	if (v[X] != 0)
+	if (v[X] > ZE || v[X] < ZE * -1)
 		return (circle_inter(p, v, dia, ret));
 	else if (v[Y] != 0)
 	{
@@ -118,7 +118,6 @@ double	dist_cy(t_obj *cy, float v[3], float p[3])
 	double a;
 
 	a = reper_change(cy, v, p);
-	if (a != -1)
 	if (a == INFINITY || a != a)
 		return (-1);
 	return (a);

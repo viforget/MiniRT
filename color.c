@@ -5,8 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/28 15:02:57 by viforget          #+#    #+#             */
+/*   Updated: 2021/01/28 15:08:44 by viforget         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 12:48:30 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/26 16:56:25 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/28 15:02:12 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +79,7 @@ float	rat_ang(float p[3], float v[3], t_obj *obj)
 	if (obj->type == SP)
 	{
 		vect_to(obj->c0, p, d, NULL);
-		ret = 90 - diff_angle(v, d);
+		ret = fabs(90 - diff_angle(v, d));
 	}
 	else if (obj->type == PL || obj->type == TR || obj->type == SQ)
 	{
@@ -77,5 +89,6 @@ float	rat_ang(float p[3], float v[3], t_obj *obj)
 		ret = cy_color(p, v, obj);
 	//printf("ret : %f\n", ret);
 	ret /= 90;
+
 	return (ret > 1 ? 1 - (ret - 1) : ret);
 }
