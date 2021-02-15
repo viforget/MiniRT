@@ -6,7 +6,7 @@
 #    By: viforget <viforget@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 07:57:46 by viforget          #+#    #+#              #
-#    Updated: 2021/01/28 16:30:11 by viforget         ###   ########.fr        #
+#    Updated: 2021/02/15 13:57:49 by viforget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,10 @@ NAME = miniRT
 FLAGS = -Wall -Wextra -Werror -I includes
 MFLAGS = -lmlx -framework Opengl -framework Appkit
 CC = @gcc -I includes
-LIBDIR = libft mlx
+LIBDIR = libft
+MLX = mlx
+
+LIBBIN = libmlx.dylib
 
 SRC = main.c\
 	  arguments.c\
@@ -37,6 +40,7 @@ SRC = main.c\
 	  cy_color.c\
 	  get_next_line.c
 
+
 O_FILES = $(SRC:%.c=%.o)
 
 FLAGLIB = -L$(LIBDIR)
@@ -44,22 +48,29 @@ FLAGLIB = -L$(LIBDIR)
 all: $(NAME)
 
 $(NAME): $(O_FILES)
+			@make -C $(MLX)
+			@cp $(MLX)/$(LIBBIN) .
 			@make all -C $(LIBDIR)
-			$(CC) $(FLAGS) $(MFLAGS) -o $(NAME) libmlx.dylib $(O_FILES)
+			$(CC) $(FLAGS) $(MFLAGS) -o $(NAME) $(LIBBIN) $(O_FILES) $(LIBDIR)/libft.a
 			@echo "\033[32mCOMPILATION OK\033[0m"
+
 dev : $(O_FILES)
+			@make -C $(MLX)
+			@cp $(MLX)/$(LIBBIN) .
 			@make all -C $(LIBDIR)
 			$(CC) -I includes $(MFLAGS) -o $(NAME) $(O_FILES) $(LIBDIR)/libft.a
 			@echo "\033[32mCOMPILATION OK\033[0m"
 
 clean:
-		@rm -rf $(O_FILES)
+		@rm -rf $(O_FILES) $(LIBBIN)
 			@make clean -C $(LIBDIR)
+			@make clean -C $(MLX)
 			@echo "\033[36mCLEAN OK\033[0m"
 
 fclean: clean
 		@rm -rf $(NAME)
 			@make fclean -C $(LIBDIR)
+			@make clean -C $(MLX)
 			@echo "\033[36mFCLEAN OK\033[0m"
 
 lib:

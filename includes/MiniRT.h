@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:00:27 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/28 15:25:48 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/28 16:25:09 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 #include "get_next_line.h"
 #include "libft.h"
+#include "mlx.h"
 
 #include <math.h>
-#include <mlx.h>
 #include <pthread.h>
 
 #include <stdio.h>

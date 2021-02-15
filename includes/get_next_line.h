@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 15:28:34 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/06 03:36:08 by viforget         ###   ########.fr       */
+/*   Updated: 2021/01/28 16:26:26 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include "libft.h"
 
 # define SEP '\n'
 
