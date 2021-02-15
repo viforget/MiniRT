@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:20:45 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/15 13:56:40 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/15 15:03:38 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 t_arg	get_res(char **split, t_arg arg, int *a)
 {
-	arg.res_x = ft_atoi(split[1]);
-	arg.res_y = ft_atoi(split[2]);
-	*a = 1;
+	arg.res_x = abs(ft_atoi(split[1]));
+	arg.res_y = abs(ft_atoi(split[2]));
+	if (arg.res_x < 1 || arg.res_y < 1)
+		*a = 0;
+	else
+		*a = 1;
 	return (arg);
 }
 
