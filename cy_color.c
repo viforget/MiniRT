@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 16:04:30 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/28 15:13:35 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/16 10:57:05 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ float	cy_color(float p[3], float v[3], t_obj *cy)
 	rotation(c_p, u, radian(180), c_p2);
 	c_p2[Z] = 0;
 	normalize_vect(c_p2);
-	return(fabs(90 - diff_angle(c_p2, c_v)));
+	return (fabs(90 - diff_angle(c_p2, c_v)));
 }

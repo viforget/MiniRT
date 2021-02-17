@@ -6,19 +6,35 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 02:54:03 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/15 13:56:33 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/17 12:07:03 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MiniRT.h"
 
-int		quit()
+int		quit(void)
 {
 	ft_putstr("BYE BYE\n");
 	exit(0);
 }
 
-int 	input(int key_in, t_arg *arg)
+void	next_cam(t_arg *arg)
+{
+	t_cam	*cam;
+	t_cam	*cam2;
+
+	cam2 = arg->cam->next;
+	if (cam2 != NULL)
+	{
+		cam = p_last_cam(arg->cam)->next;
+		cam->next = arg->cam;
+		arg->cam->next = NULL;
+		arg->cam = cam2;
+		display_screen(arg->mlx, arg, arg->cam);
+	}
+}
+
+int		input(int key_in, t_arg *arg)
 {
 	t_cam	*cam;
 	t_cam	*cam2;
@@ -37,19 +53,9 @@ int 	input(int key_in, t_arg *arg)
 			cam2->next = NULL;
 			display_screen(arg->mlx, arg, arg->cam);
 		}
-	}	
-	else if (key_in == 0x7c)
-	{
-		cam2 = arg->cam->next;
-		if (cam2 != NULL)
-		{
-			cam = p_last_cam(arg->cam)->next;
-			cam->next = arg->cam;
-			arg->cam->next = NULL;
-			arg->cam = cam2;
-			display_screen(arg->mlx, arg, arg->cam);
-		}
 	}
+	else if (key_in == 0x7c)
+		next_cam(arg);
 	return (0);
 }
 
@@ -57,6 +63,7 @@ void	mlx_setup(t_mlx *mlx, t_arg *arg, char *title)
 {
 	int x;
 	int y;
+
 	mlx->mlx = mlx_init();
 	mlx_get_screen_size(mlx->mlx, &x, &y);
 	if (arg->res_x > x)
@@ -67,7 +74,14 @@ void	mlx_setup(t_mlx *mlx, t_arg *arg, char *title)
 	mlx->img = mlx_new_image(mlx->mlx, arg->res_x, arg->res_y);
 	mlx->disp = (int *)mlx_get_data_addr(mlx->img, &mlx->bpp,
 		&mlx->size_l, &mlx->endian);
-//	printf("bpp: %d\n size_l : %d\n endian: %d\n", mlx->bpp, mlx->size_l, mlx->endian);
+}
+
+void	mlx_loop_aff(t_arg arg, t_mlx mlx)
+{
+	display_screen(&mlx, &arg, arg.cam);
+	mlx_key_hook(mlx.win, input, &arg);
+	mlx_hook(mlx.win, 17, (1L << 17), &quit, NULL);
+	mlx_loop(mlx.mlx);
 }
 
 int		main(int ac, char **av)
@@ -90,13 +104,7 @@ int		main(int ac, char **av)
 	calc_screen(mlx, &arg);
 	arg.mlx = &mlx;
 	if (arg.save == 0)
-	{
-		display_screen(&mlx, &arg, arg.cam);
-		mlx_key_hook(mlx.win, input, &arg);
-		mlx_hook(mlx.win, 17, (1L << 17), &quit, NULL);
-		mlx_loop(mlx.mlx);
-	}
+		mlx_loop_aff(arg, mlx);
 	else
 		bmp_save(arg);
-	printf("B\n");
 }

@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/28 15:23:39 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/16 13:33:12 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,22 +59,19 @@ void	*thread_start(void *tmp)
 	int		x;
 	int		y;
 	float	v[3];
-	float	t[3];
-	int 	color;
+	int		color;
 
-	arg = (t_arg*)tmp;
+	arg = (t_arg *)tmp;
 	while (arg->cam)
 	{
-		x = arg->th * arg->res_x / NB_THREAD;
-		while (x  < (arg->th + 1) * arg->res_x / NB_THREAD)
+		x = arg->th * arg->res_x / NB_THREAD;//NORME ERROR HERE
+		while (x < (arg->th + 1) * arg->res_x / NB_THREAD)
 		{
 			y = 0;
-			while (y  < arg->res_y)
+			while (y < arg->res_y)
 			{
-				rhor(arg->cam->vec, calc_angle_x(arg->cam->fov, arg->res_x, x), t);
-				rver(t, calc_angle_y(arg->cam->fov, arg->res_x, y - (arg->res_y / 2)), v);
+				rot_fov(arg, v, x, y);
 				call_pixel(*arg, v, arg->cam->c, &color);
-			//	call_pixel(*arg, arg->cam->vec, arg->cam->c, &color);
 				arg->cam->disp[y * arg->res_x + x] = color;
 				y++;
 			}
@@ -106,34 +103,11 @@ void	calc_screen(t_mlx mlx, t_arg *arg)
 		i++;
 	}
 	while (i--)
+	{
 		if (pthread_join(th[i], NULL))
 		{
 			ft_putendl("error joining thread");
 			exit(0);
 		}
-}
-
-/*void	display_screen(t_mlx mlx, t_arg arg, t_cam *cam)
-{
-	int		c[2];
-	float	v[3];
-	float	t[3];
-	int		color;
-	int		*display;
-
-	c[Y] = 0;
-	while (c[Y] < arg.res_y)
-	{
-		c[X] = 0;
-		while (c[X] < arg.res_x)
-		{
-			rhor(cam->vec, calc_angle_x(cam->fov, arg.res_x, c[X]), t);
-			rver(t, calc_angle_y(cam->fov, arg.res_x, c[Y] - (arg.res_y / 2)),
-					v);
-			call_pixel(arg, v, cam->c, &color);
-			cam->disp[c[Y] * arg.res_x + c[X]] = color;
-			c[X]++;
-		}
-		c[Y]++;
 	}
-}*/
+}

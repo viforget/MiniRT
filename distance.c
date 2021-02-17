@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 14:51:47 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/27 17:19:46 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/16 13:35:13 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ double	dist_tr(t_obj *tr, float v[3], float p[3])
 
 double	dist_sq(t_obj *sq, float v[3], float p[3])
 {
-	double d;
-	float tem;
+	double	d;
+	float	tem;
 
 	d = dist_pl(sq, v, p);
 	tem = p[X] + d * v[X];

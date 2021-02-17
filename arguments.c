@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:20:45 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/16 10:53:47 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/17 11:46:56 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ t_arg	bzero_arg(t_arg arg)
 	arg.lig = NULL;
 	arg.name = NULL;
 	arg.a_check = 0;
+	arg.res_x = 0;
+	arg.res_y = 0;
 	return (arg);
 }
 
@@ -79,12 +81,25 @@ int		do_line(char **split, t_arg *arg, int a)
 	return (1);
 }
 
+void	boucle_arg(t_arg *arg, int fd)
+{
+	char	*str;
+
+	while (get_next_line(fd, &str) && str)
+	{
+		if (do_line(ft_split(str, ' '), arg, 0) == 0)
+		{
+			close(fd);
+			return ;
+		}
+		free(str);
+	}
+}
+
 t_arg	get_arg(char **file)
 {
 	t_arg	arg;
 	int		fd;
-	char	*str;
-	char	**split;
 
 	arg = bzero_arg(arg);
 	if (file[2] && ft_strcmp(file[2], "-save") == 0)
@@ -99,15 +114,7 @@ t_arg	get_arg(char **file)
 		get_error(arg, NULL, 1);
 		return (arg);
 	}
-	while (get_next_line(fd, &str) && str)
-	{
-		if (do_line(ft_split(str, ' '), &arg, 0) == 0)
-		{
-			close(fd);
-			return (arg);
-		}
-		free(str);
-	}
+	boucle_arg(&arg, fd);
 	close(fd);
 	return (arg);
 }

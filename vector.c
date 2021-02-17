@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:47:15 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/19 15:26:10 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/16 13:35:59 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	invert_vector(float v[3], float ret[3])
 
 void	ortho_vector(float v[3], float u[3], float ret[3])
 {
-	ret[X] = v[Y] * u[Z] + (v[Z] * u[Y] * - 1);
-	ret[Y] = v[Z] * u[X] + (v[X] * u[Z] * - 1);
-	ret[Z] = v[X] * u[Y] + (v[Y] * u[X] * - 1);
+	ret[X] = v[Y] * u[Z] + (v[Z] * u[Y] * -1);
+	ret[Y] = v[Z] * u[X] + (v[X] * u[Z] * -1);
+	ret[Z] = v[X] * u[Y] + (v[Y] * u[X] * -1);
 }
 
 void	ortho_triangle(t_obj *triangle)
