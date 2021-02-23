@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 20:53:31 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/26 13:39:37 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/23 11:11:42 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ int		get_color(char *str)
 	char	**split;
 	int		color;
 
-	color = ft_atoi(str) * 0x10000;
+	color = abs(ft_atoi(str)) * 0x10000;
 	while (*str && *str != ',')
 		str++;
-	color += ft_atoi(++str) * 0x100;
+	color += abs(ft_atoi(++str)) * 0x100;
 	while (*str && *str != ',')
 		str++;
-	color += ft_atoi(++str);
+	color += abs(ft_atoi(++str));
 	return (color);
 }
 

@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:37:14 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/16 13:33:12 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/18 13:25:49 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,26 +56,25 @@ void	display_screen(t_mlx *mlx, t_arg *arg, t_cam *cam)
 void	*thread_start(void *tmp)
 {
 	t_arg	*arg;
-	int		x;
-	int		y;
+	long	c[2];
 	float	v[3];
 	int		color;
 
 	arg = (t_arg *)tmp;
 	while (arg->cam)
 	{
-		x = arg->th * arg->res_x / NB_THREAD;//NORME ERROR HERE
-		while (x < (arg->th + 1) * arg->res_x / NB_THREAD)
+		c[0] = (arg->res_x / NB_THREAD) * arg->th;
+		while (c[0] < (arg->th + 1) * arg->res_x / NB_THREAD)
 		{
-			y = 0;
-			while (y < arg->res_y)
+			c[1] = 0;
+			while (c[1] < arg->res_y)
 			{
-				rot_fov(arg, v, x, y);
+				rot_fov(arg, v, c[0], c[1]);
 				call_pixel(*arg, v, arg->cam->c, &color);
-				arg->cam->disp[y * arg->res_x + x] = color;
-				y++;
+				arg->cam->disp[c[1] * arg->res_x + c[0]] = color;
+				c[1]++;
 			}
-			x++;
+			c[0]++;
 		}
 		arg->cam = arg->cam->next;
 	}
@@ -96,18 +95,10 @@ void	calc_screen(t_mlx mlx, t_arg *arg)
 		ft_memcpy((void*)tmp[i], (void*)arg, sizeof(t_arg));
 		tmp[i]->th = i;
 		if (pthread_create(&th[i], NULL, thread_start, (void *)tmp[i]))
-		{
-			ft_putendl("error with pthread_create");
-			exit(0);
-		}
+			get_error(*arg, NULL, 2);
 		i++;
 	}
 	while (i--)
-	{
 		if (pthread_join(th[i], NULL))
-		{
-			ft_putendl("error joining thread");
-			exit(0);
-		}
-	}
+			get_error(*arg, NULL, 2);
 }

@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:20:45 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/17 11:46:56 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/17 13:35:24 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,6 @@ t_arg	get_amb(char **split, t_arg arg, int *a)
 	arg.a_rat = ft_atof(split[1]);
 	arg.a_color = get_color(split[2]);
 	arg.a_check = 1;
-	return (arg);
-}
-
-t_arg	bzero_arg(t_arg arg)
-{
-	arg.th = -1;
-	arg.cam = NULL;
-	arg.obj = NULL;
-	arg.lig = NULL;
-	arg.name = NULL;
-	arg.a_check = 0;
-	arg.res_x = 0;
-	arg.res_y = 0;
 	return (arg);
 }
 

@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 12:26:37 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/26 13:42:08 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/18 13:12:09 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@ t_cam	*p_last_cam(t_cam *cam)
 		return (cam);
 	}
 	return (p_last_cam(cam->next));
+}
+
+t_arg	bzero_arg(t_arg arg)
+{
+	arg.th = -1;
+	arg.cam = NULL;
+	arg.obj = NULL;
+	arg.lig = NULL;
+	arg.name = NULL;
+	arg.a_check = 0;
+	arg.res_x = 0;
+	arg.res_y = 0;
+	return (arg);
 }
 
 void	bzero_cam(t_cam *cam)
