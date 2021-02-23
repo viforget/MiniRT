@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 23:17:32 by viforget          #+#    #+#             */
-/*   Updated: 2020/10/15 23:22:15 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/23 12:38:13 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	**ft_settab(int x, int y)
 {
-	int 	i;
+	int		i;
 	char	**tab;
 
 	i = 0;
