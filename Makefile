@@ -6,7 +6,7 @@
 #    By: viforget <viforget@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 07:57:46 by viforget          #+#    #+#              #
-#    Updated: 2021/02/15 13:57:49 by viforget         ###   ########.fr        #
+#    Updated: 2021/02/23 13:46:28 by viforget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC = main.c\
 	  cylindre.c\
 	  bmp.c\
 	  cy_color.c\
+	  mlx_function.c\
 	  get_next_line.c
 
 
@@ -47,18 +48,13 @@ FLAGLIB = -L$(LIBDIR)
 
 all: $(NAME)
 
+bonus: all
+
 $(NAME): $(O_FILES)
 			@make -C $(MLX)
 			@cp $(MLX)/$(LIBBIN) .
 			@make all -C $(LIBDIR)
 			$(CC) $(FLAGS) $(MFLAGS) -o $(NAME) $(LIBBIN) $(O_FILES) $(LIBDIR)/libft.a
-			@echo "\033[32mCOMPILATION OK\033[0m"
-
-dev : $(O_FILES)
-			@make -C $(MLX)
-			@cp $(MLX)/$(LIBBIN) .
-			@make all -C $(LIBDIR)
-			$(CC) -I includes $(MFLAGS) -o $(NAME) $(O_FILES) $(LIBDIR)/libft.a
 			@echo "\033[32mCOMPILATION OK\033[0m"
 
 clean:
