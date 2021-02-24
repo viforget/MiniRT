@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 13:22:55 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/24 10:10:56 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/24 11:41:53 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int		verif(float dist_obj, float dist_light)
 {
 	if (dist_obj <= ZE || dist_obj - ZE > dist_light)
+		return (0);
+	if (dist_obj != dist_obj)
 		return (0);
 	return (1);
 }
