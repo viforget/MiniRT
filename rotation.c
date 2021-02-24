@@ -6,11 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:06:31 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/16 14:07:41 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:11:18 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MiniRT.h"
+#include "minirt.h"
 
 void	set_cy(t_obj *cy, float v[3], float p[3], float c[2][3])
 {

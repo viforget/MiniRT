@@ -6,11 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 13:36:12 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/18 12:18:59 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:11:15 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MiniRT.h"
+#include "minirt.h"
 
 int		quit(void *tmp)
 {

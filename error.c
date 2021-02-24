@@ -6,11 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 14:22:43 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/23 12:10:26 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:10:47 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MiniRT.h"
+#include "minirt.h"
 
 void	del_obj(t_obj *obj)
 {

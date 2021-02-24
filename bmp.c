@@ -6,11 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 14:07:59 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/18 11:35:58 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:10:10 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MiniRT.h"
+#include "minirt.h"
 
 void	fill_map(t_arg arg, int *img, int fd)
 {

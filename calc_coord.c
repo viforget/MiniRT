@@ -6,11 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 08:42:22 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/19 15:07:55 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:10:15 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MiniRT.h"
+#include "minirt.h"
 
 int		is_pos(float nb)
 {

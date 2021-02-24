@@ -6,11 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 16:04:30 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/16 10:57:05 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:10:35 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MiniRT.h"
+#include "minirt.h"
 
 void	half_vector(float v[3], float u[3])
 {

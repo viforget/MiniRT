@@ -6,11 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 02:54:03 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/23 12:10:45 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:11:08 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MiniRT.h"
+#include "minirt.h"
 
 int		main(int ac, char **av)
 {

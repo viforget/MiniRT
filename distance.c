@@ -6,11 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 14:51:47 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/16 13:35:13 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:10:44 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MiniRT.h"
+#include "minirt.h"
 
 double	dist_sp(t_obj *obj, float v[3], float p[3])
 {

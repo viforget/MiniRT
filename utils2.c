@@ -6,11 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 12:33:04 by viforget          #+#    #+#             */
-/*   Updated: 2021/01/16 17:03:02 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:11:35 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MiniRT.h"
+#include "minirt.h"
 
 t_cam	*add_cam(t_cam *first, t_cam *cam)
 {

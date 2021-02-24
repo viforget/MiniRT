@@ -6,11 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 13:47:15 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/16 13:35:59 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:11:39 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MiniRT.h"
+#include "minirt.h"
 
 float	scal_vector(float v1[3], float v2[3])
 {

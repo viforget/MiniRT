@@ -6,11 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 13:40:11 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/16 13:36:42 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:11:21 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MiniRT.h"
+#include "minirt.h"
 
 void	border(t_obj *sq)
 {

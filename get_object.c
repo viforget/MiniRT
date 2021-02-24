@@ -6,11 +6,11 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 18:38:03 by viforget          #+#    #+#             */
-/*   Updated: 2020/12/21 14:10:10 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:10:53 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MiniRT.h"
+#include "minirt.h"
 
 int		get_sp(char **split, t_arg *arg)
 {
