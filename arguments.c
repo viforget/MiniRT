@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 03:20:45 by viforget          #+#    #+#             */
-/*   Updated: 2021/02/24 10:11:41 by viforget         ###   ########.fr       */
+/*   Updated: 2021/02/25 11:24:47 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,14 @@ int		do_line(char **split, t_arg *arg, int a)
 void	boucle_arg(t_arg *arg, int fd)
 {
 	char	*str;
+	int		i;
 
 	while (get_next_line(fd, &str) && str)
 	{
+		i = -1;
+		while (str[++i])
+			if (str[i] == '\t')
+				str[i] = ' ';
 		if (do_line(ft_split(str, ' '), arg, 0) == 0)
 		{
 			close(fd);
